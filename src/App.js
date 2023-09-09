@@ -1,10 +1,13 @@
 import React from "react";
+import Header from "./components/Header/Header";
+import {Route, Switch} from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hola</h1>
-    </div>
+    <React.Fragment>
+      <Header/>
+      
+    </React.Fragment>
   );
 }
 
