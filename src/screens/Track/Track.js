@@ -11,7 +11,7 @@ class Track extends Component{
     }
 
     componentDidMount(){
-        fetch('https://api.allorigins.win/raw?url=https://api.deezer.com/track/${this.state.id}')
+        fetch(`https://api.allorigins.win/raw?url=https://api.deezer.com/track/${this.state.id}`)
             .then(data => data.json())        
             .then( info =>{
                 this.setState({info: info});
