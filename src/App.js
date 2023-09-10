@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./components/Header/Header";
 import {Route, Switch} from 'react-router-dom';
 import Home from "./screens/Home";
-import Favoritos from "./screens/Favoritos";
+import Favorites from "./screens/Favorites";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <Header/>
       <Switch>
         <Route path='/' exact={true} component={Home}/>
-        <Route path='favoritos' component={Favoritos}/>
+        <Route path='favorites' component={Favorites}/>
       </Switch>
     </React.Fragment>
   );
