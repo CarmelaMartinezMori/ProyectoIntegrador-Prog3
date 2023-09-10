@@ -68,9 +68,13 @@ class Home extends Component{
                     <p>{this.state.mensaje}</p>
                 </div>
                 <section>
-                    {this.state.tracks.length === 0 ? <h3>Loading...</h3> : 
-                    <h3>Search Results:</h3>
-                    
+                    {this.state.tracks.length === 0 ? <h3>Loading...</h3> :    
+                        <section className="canciones">  
+                            <div>
+                                <h3>Resultados de Busqueda:</h3>
+                                
+                            </div> 
+                        </section>
                     }
                 </section>
             </React.Fragment>
