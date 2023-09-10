@@ -1,0 +1,24 @@
+footer {
+    background-color: black; /* Cambia el color de fondo a negro */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: sans-serif; /* Cambia la fuente a sans-serif */
+  }
+  
+  .footer-team {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: white;
+    list-style: none;
+    font-family: sans-serif; /* Cambia la fuente a sans-serif */
+    font-size: 12px;
+  }
+  
+  .footer-team li {
+    padding: 0px 10px;
+  }
+  

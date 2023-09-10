@@ -3,6 +3,8 @@ import Header from "./components/Header/Header";
 import {Route, Switch} from 'react-router-dom';
 import Home from "./screens/Home";
 import Favorites from "./screens/Favorites";
+import Footer from "./components/Footer/Footer";
+
 
 function App() {
   return (
@@ -12,6 +14,7 @@ function App() {
         <Route path='/' exact={true} component={Home}/>
         <Route path='favorites' component={Favorites}/>
       </Switch>
+      <Footer/>
     </React.Fragment>
   );
 }

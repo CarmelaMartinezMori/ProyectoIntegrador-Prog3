@@ -20,7 +20,7 @@ class Header extends Component {
   render(){
     return(
       <nav className='nav'>
-        <img className='logo' src='/img/logo.png'alt='logo'></img>
+        <Link to='/'><img className='logo' src='/img/logo.png'alt='logo'/></Link>
         {elements.map((element, idx) => <Link to={element.route} key={idx}> {element.name}</Link>
         )}
       </nav>
