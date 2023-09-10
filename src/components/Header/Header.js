@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom/cjs/react-router-dom'
 import './Header.css'
+import Home from '../../screens/Home'
 
 const elementos =[
   {nombre: 'Inicio', ruta:'/'},
@@ -20,7 +21,7 @@ class Header extends Component {
     return(
       <nav className='nav'>
         <img className='logo' src='/img/logo.png'alt='logo'></img>
-        {elementos.map((elm, idx) => <li key={idx} > {elm.nombre}</li>
+        {elementos.map((elm, idx) => <Link to={elm.ruta} key={idx}> {elm.nombre}</Link>
         )}
       </nav>
     )
