@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import './albumList.css';
 
-class ListadoAlbum extends Component {
+class AlbumList extends Component {
   state = {
     texto: 'View more',
     clase: 'hidden',
@@ -41,15 +41,15 @@ class ListadoAlbum extends Component {
         <article>
           <Link to={`/album/id/${info.id}`}>
             <img src={info.cover} alt={info.title} />
-          <div>
-            <h3>{info.title}</h3>
-            <p className={this.state.clase}>{`Artist: ${info.artist.name}, Explicit Lyrics: ${info.explicit_lyrics}`}</p>
-            <a onClick={this.toggleText}>{this.state.texto}</a>
+            <div className="album-info">
+              <h3>{info.title}</h3>
+              <p className={this.state.clase}>{`Artist: ${info.artist.name}, Explicit Lyrics: ${info.explicit_lyrics}`}</p>
+              <a onClick={this.toggleText}>{this.state.texto}</a>
 
-            <button className="boton" onClick={() => this.handleFavorites(info.id)}>
-              {this.state.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
-            </button>
-          </div>
+              <button className="boton" onClick={() => this.handleFavorites(info.id)}>
+                {this.state.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+              </button>
+            </div>
           </Link>
         </article>
       </section>
@@ -57,4 +57,4 @@ class ListadoAlbum extends Component {
   }
 }
 
-export default ListadoAlbum;
+export default AlbumList;

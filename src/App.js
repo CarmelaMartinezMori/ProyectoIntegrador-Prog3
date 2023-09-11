@@ -18,7 +18,7 @@ function App() {
         <Route path='/favorites' component={Favorites}/>
         <Route path='/albums' component={Albums}/>
 
-        <Route path='/album/id/:id' exact={true} component= {AlbumDetail}/>
+        <Route path='/albumDetail/id/:id' exact={true} component= {AlbumDetail}/>
       </Switch>
       <Footer/>
     </React.Fragment>

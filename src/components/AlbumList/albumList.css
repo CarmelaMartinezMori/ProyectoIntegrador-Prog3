@@ -1,9 +1,24 @@
-.content{
-    background-color:rgb(134, 157, 161);
+/* Estilos base */
+.content {
+    background-color: #ccc; /* Fondo gris */
     margin: 25px;
-    padding: 50px;
-    color:rgb(35, 34, 52);
+    padding: 20px; /* Ajusta el espacio interior */
+    color: white; /* Texto blanco */
     border-radius: 20px;
-    border: solid 5px rgb(66, 94, 112);
-
-}
+    border: solid 5px #000;
+  }
+  
+  /* Estilos para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .content {
+      padding: 30px; /* Aumenta el espacio interior */
+    }
+  }
+  
+  /* Estilos para pantallas más grandes */
+  @media (min-width: 1200px) {
+    .content {
+      padding: 50px; /* Aumenta el espacio interior aún más */
+    }
+  }
+  
