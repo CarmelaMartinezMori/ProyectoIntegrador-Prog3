@@ -39,7 +39,7 @@ class AlbumList extends Component {
     return (
       <section className="content">
         <article>
-          <Link to={`/album/id/${info.id}`}>
+          <Link to={`/albumDetail/id/${info.id}`}>
             <img src={info.cover} alt={info.title} />
             <div className="album-info">
               <h3>{info.title}</h3>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AlbumListContainer from '../components/AlbumListContainer/AlbumListContainer';
+import TrackListContainer from '../components/TrackListContainer/TrackListContainer';
 
 class Home extends Component {
   constructor(props) {
@@ -86,6 +87,7 @@ class Home extends Component {
               <div>
                 <h3>Search Results:</h3>
                 <AlbumListContainer data={this.state.albums} />
+                <TrackListContainer data={this.state.tracks} />
               </div>
             </section>
           }

@@ -1,0 +1,19 @@
+.content{
+    background-color:rgb(134, 157, 161);
+    margin: 25px;
+    padding: 50px;
+    color:rgb(35, 34, 52);
+    border-radius: 20px;
+    border: solid 5px rgb(66, 94, 112);
+
+}
+p.hidden{
+    display:none
+}
+p.show{
+    display:block
+}
+.canciones{
+    display: flex;
+    flex-direction: row;
+}
