@@ -5,6 +5,7 @@ import Home from "./screens/Home";
 import Favorites from "./screens/Favorites";
 import Footer from "./components/Footer/Footer";
 import Album from "./screens/Album/Album";
+import Albums from "./screens/Albums/Albums";
 
 
 
@@ -14,7 +15,8 @@ function App() {
       <Header/>
       <Switch>
         <Route path='/' exact={true} component={Home}/>
-        <Route path='favorites' component={Favorites}/>
+        <Route path='/favorites' component={Favorites}/>
+        <Route path='/albums' component={Albums}/>
 
         <Route path='/album/id/:id' exact={true} component= {Album}/>
       </Switch>

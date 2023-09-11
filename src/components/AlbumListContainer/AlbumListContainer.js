@@ -8,7 +8,7 @@ class AlbumListContainer extends Component {
       <section className='content'>
         <section>
           <h2>Albums</h2>
-          <Link to='/viewAllAlbums'>
+          <Link to='/albums'>
             <p>View All</p>
           </Link>
           {/* Check if data is available */}

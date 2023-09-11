@@ -1,27 +1,42 @@
+/* album.css */
 .container {
     display: flex;
     justify-content: center;
-    background-color: lightblue;
+    align-items: center; /* Centra verticalmente */
+    background-color: #f0f0f0; /* Cambia a un fondo gris claro */
     flex-direction: column;
-}
-
-.title{
+    min-height: 100vh; /* Asegura que el contenedor ocupe al menos toda la altura de la ventana */
+    text-align: center; /* Centra horizontalmente el contenido de texto */
+  }
+  
+  .title {
     font-family: 'Work Sans', sans-serif;
-    background-repeat: no-repeat;
-    background-position: right;
-   text-align: center;
-}
-
-.imagen{
-    width: 150px;
-    height: 150px;
+    text-align: center;
+    margin: 10px 0; /* Agrega espacio entre los elementos de texto */
+  }
+  
+  .imagen {
+    width: 500px;
+    height: 500px;
     align-self: center;
-}
-
-.lista{
+    margin: 20px 0; /* Agrega espacio entre la imagen y otros elementos */
+  }
+  
+  .lista {
     font-family: 'Work Sans', sans-serif;
-    background-repeat: no-repeat;
-    background-position: right;
-   text-align: center;
-   
-}
+    text-align: center;
+    list-style: none; /* Elimina los bullet points */
+    padding: 0; /* Elimina el relleno predeterminado de la lista */
+  }
+  
+  .lista li {
+    margin: 5px 0; /* Agrega espacio entre elementos de la lista */
+  }
+  
+  @media (max-width: 768px) {
+    .imagen {
+      width: 400px; /* Reduce el tamaño de la imagen en pantallas más pequeñas */
+      height: 400px;
+    }
+  }
+  
