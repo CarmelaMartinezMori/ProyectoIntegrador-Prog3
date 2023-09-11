@@ -37,20 +37,22 @@ class AlbumList extends Component {
     const { info } = this.props;
 
     return (
-      <section className="content">
+        <section className="content">
         <article>
           <Link to={`/albumDetail/id/${info.id}`}>
+            {/* Aquí envolvemos todo el contenido excepto el botón */}
             <img src={info.cover} alt={info.title} />
             <div className="album-info">
               <h3>{info.title}</h3>
               <p className={this.state.clase}>{`Artist: ${info.artist.name}, Explicit Lyrics: ${info.explicit_lyrics}`}</p>
               <a onClick={this.toggleText}>{this.state.texto}</a>
-
-              <button className="boton" onClick={() => this.handleFavorites(info.id)}>
-                {this.state.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
-              </button>
             </div>
           </Link>
+
+          {/* El botón "Add to favorites" no está dentro del <Link> */}
+          <button className="boton" onClick={() => this.handleFavorites(info.id)}>
+            {this.state.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+          </button>
         </article>
       </section>
     );

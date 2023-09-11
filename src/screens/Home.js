@@ -13,7 +13,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    // Fetch los datos de las canciones y álbumes del top de la API aquí
+ 
     fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks?limit=20')
       .then(res => res.json())
       .then(data => this.setState({ tracks: data.data }))
@@ -34,21 +34,21 @@ class Home extends Component {
   
     // Realiza la búsqueda y el filtrado solo en los datos locales (albums y tracks)
     const searchTerm = this.state.value.toLowerCase();
-    console.log('Search Term:', searchTerm); // Agregar esta línea
+    console.log('Search Term:', searchTerm); 
   
     const filteredAlbums = this.state.albums.filter(album =>
       album.title.toLowerCase().includes(searchTerm) ||
       album.artist.name.toLowerCase().includes(searchTerm)
     );
-    console.log('Filtered Albums:', filteredAlbums); // Agregar esta línea
+    console.log('Filtered Albums:', filteredAlbums); 
   
     const filteredTracks = this.state.tracks.filter(track =>
       track.title.toLowerCase().includes(searchTerm) ||
       track.artist.name.toLowerCase().includes(searchTerm)
     );
-    console.log('Filtered Tracks:', filteredTracks); // Agregar esta línea
+    console.log('Filtered Tracks:', filteredTracks); 
   
-    // Actualiza el estado con los resultados de la búsqueda
+  
     this.setState({
       albums: filteredAlbums,
       tracks: filteredTracks,
