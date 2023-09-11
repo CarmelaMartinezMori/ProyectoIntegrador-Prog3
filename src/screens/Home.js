@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import AlbumListContainer from '../components/AlbumListContainer/AlbumListContainer'
 
 class Home extends Component{
     constructor(props){
@@ -71,8 +72,8 @@ class Home extends Component{
                     {this.state.tracks.length === 0 ? <h3>Loading...</h3> :    
                         <section className="canciones">  
                             <div>
-                                <h3>Resultados de Busqueda:</h3>
-                                
+                                <h3>Search Results:</h3>
+                                <AlbumListContainer data={this.state.albums} />      
                             </div> 
                         </section>
                     }
