@@ -12,20 +12,20 @@ class TrackListContainer extends Component {
     return (
       <section className="content">
         <section>
-          <h2>Songs</h2>
-          <Link to="/viewAllSongs">
+          <h2>Spngs</h2>
+          <Link to="/tracks">
             <p>View All</p>
           </Link>
-          {this.props.data.length < 0 ? (
+          {/* Check if data is available */}
+          {this.props.data.length <= 0 ? (
             <h1>Loading...</h1>
           ) : (
-            this.props.data.map((track, i) => {
-              return (
-                <article key={i}>
-                  <TrackList info={track} />
-                </article>
-              );
-            })
+            // Map through the data and render AlbumList component
+            this.props.data.map((track, i) => (
+              <article key={i}>
+                <TrackList info={track} />
+              </article>
+            ))
           )}
         </section>
       </section>
