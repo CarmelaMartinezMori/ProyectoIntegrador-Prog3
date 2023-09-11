@@ -8,91 +8,73 @@ class Home extends Component {
     this.state = {
       albums: [],
       tracks: [],
-      searchResults: [],
-      message: '',
-      value: ''
+      value: '',
     };
   }
 
   componentDidMount() {
+    // Fetch los datos de las canciones y álbumes del top de la API aquí
     fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks?limit=20')
-      .then(res => {
-        if (!res.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return res.json();
-      })
-      .then(data => this.setState({
-        tracks: data.data
-      }, () => console.log(this.state.tracks)))
+      .then(res => res.json())
+      .then(data => this.setState({ tracks: data.data }))
       .catch(error => console.log('Error fetching tracks:', error));
 
     fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums?limit=20')
-      .then(res => {
-        if (!res.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return res.json();
-      })
-      .then(data => this.setState({
-        albums: data.data
-      }))
+      .then(res => res.json())
+      .then(data => this.setState({ albums: data.data }))
       .catch(error => console.log('Error fetching albums:', error));
   }
 
   handleSearch(event) {
     event.preventDefault();
     if (this.state.value === '') {
-      this.setState({
-        message: 'You haven\'t written anything yet'
-      });
-    } else {
-      fetch(`https://api.allorigins.win/raw?url=https://api.deezer.com/search?q=${this.state.value}`)
-        .then(response => response.json())
-        .then(data => {
-          console.log(data, 'search');
-          this.setState({
-            searchResults: data.data
-          });
-          if (data.results.length === 0) {
-            this.setState({
-              message: 'No results were found'
-            });
-          }
-        })
-        .catch(error => console.log(error));
+      // Si no se ha ingresado nada en el campo de búsqueda, no se hace nada
+      return;
     }
+  
+    // Realiza la búsqueda y el filtrado solo en los datos locales (albums y tracks)
+    const searchTerm = this.state.value.toLowerCase();
+    console.log('Search Term:', searchTerm); // Agregar esta línea
+  
+    const filteredAlbums = this.state.albums.filter(album =>
+      album.title.toLowerCase().includes(searchTerm) ||
+      album.artist.name.toLowerCase().includes(searchTerm)
+    );
+    console.log('Filtered Albums:', filteredAlbums); // Agregar esta línea
+  
+    const filteredTracks = this.state.tracks.filter(track =>
+      track.title.toLowerCase().includes(searchTerm) ||
+      track.artist.name.toLowerCase().includes(searchTerm)
+    );
+    console.log('Filtered Tracks:', filteredTracks); // Agregar esta línea
+  
+    // Actualiza el estado con los resultados de la búsqueda
+    this.setState({
+      albums: filteredAlbums,
+      tracks: filteredTracks,
+    });
   }
+   
 
   handleChange(event) {
-    this.setState(
-      { value: event.target.value, message: '', searchResults: [] },
-    );
+    this.setState({ value: event.target.value });
   }
 
   render() {
     return (
-      <React.Fragment>
-        <div className='search-home'>
-          <h2>Search:</h2>
-          <form onSubmit={(event) => this.handleSearch(event)}>
-            <input type="text" onChange={(event) => this.handleChange(event)} value={this.state.value} />
-            <button type="submit">Search</button>
-          </form>
-          <p>{this.state.message}</p>
-        </div>
+      <div className='search-home'>
+        <h2>Search:</h2>
+        <form onSubmit={(event) => this.handleSearch(event)}>
+          <input type="text" name="search" onChange={(event) => this.handleChange(event)} value={this.state.value} />
+          <button type="submit">Search</button>
+        </form>
         <section>
-          {this.state.tracks.length === 0 ? <h3>Loading...</h3> :
-            <section className="songs">
-              <div>
-                <h3>Search Results:</h3>
-                <AlbumListContainer data={this.state.albums} />
-                <TrackListContainer data={this.state.tracks} />
-              </div>
-            </section>
-          }
+          <h3>Top Albums:</h3>
+          <AlbumListContainer data={this.state.albums} />
+          <h3>Top Tracks:</h3>
+          <TrackListContainer data={this.state.tracks} />
         </section>
-      </React.Fragment>
+      </div>
     );
   }
 }

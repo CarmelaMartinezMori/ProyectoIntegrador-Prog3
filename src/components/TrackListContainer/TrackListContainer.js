@@ -16,14 +16,12 @@ class TrackListContainer extends Component {
           <Link to="/viewAllSongs">
             <p>View All</p>
           </Link>
-          {console.log(this.props.data, 'data')}
           {this.props.data.length < 0 ? (
             <h1>Loading...</h1>
           ) : (
             this.props.data.map((track, i) => {
               return (
                 <article key={i}>
-                  {console.log(track, 'isa')}
                   <TrackList info={track} />
                 </article>
               );
