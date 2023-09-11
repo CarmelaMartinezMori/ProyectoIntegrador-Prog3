@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './album.css'
+import './albumDetail.css'
 
-class Album extends Component {
+class AlbumDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -99,4 +99,4 @@ class Album extends Component {
   }
 }
 
-export default Album;
+export default AlbumDetail;
