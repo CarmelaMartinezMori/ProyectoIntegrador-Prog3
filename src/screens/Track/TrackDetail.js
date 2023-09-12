@@ -58,8 +58,7 @@ class TrackDetail extends Component{
               <iframe src={this.state.info.preview} title="Audio Preview" />
       
               <a onClick={() => this.changeText()} className='more'>{this.state.text}</a>
-              <section className='extra'>
-                {/* Add any additional content here if needed */}
+              <section className='extra'>               
               </section>
       
               <button className='boton' onClick={() => this.addToFavorites(this.state.info.id)}>
