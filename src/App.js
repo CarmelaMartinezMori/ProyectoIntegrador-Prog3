@@ -8,6 +8,7 @@ import Footer from "./components/Footer/Footer";
 import Albums from "./screens/Albums/Albums";
 import AlbumDetail from "./screens/AlbumDetail/AlbumDetail";
 import TrackDetail from "./screens/Track/TrackDetail";
+import Tracks from "./screens/Tracks/Tracks";
 
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
           <Route path="/" exact={true} component={Home} />
           <Route path="/favorites" component={Favorites} />
           <Route path="/albums" component={Albums} />
+          <Route path="/tracks" component={Tracks} />
           
           <Route path="/albumDetail/id/:id" exact={true} component={AlbumDetail} />
           <Route path="/trackDetail/id/:id" exact={true} component={TrackDetail} />
