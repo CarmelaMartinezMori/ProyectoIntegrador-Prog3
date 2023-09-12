@@ -24,6 +24,7 @@ class Favorites extends Component {
       Promise.all(trackIds.map((id) => this.fetchTrackInfo(id)))
         .then((trackInfoArray) => {
           this.setState({ favoriteTracks: trackInfoArray });
+          
         })
         .catch((error) => {
           console.error('Error fetching favorite tracks:', error);
@@ -74,7 +75,9 @@ class Favorites extends Component {
 
   render() {
     const { favoriteTracks, favoriteAlbums } = this.state;
-
+    console.log(favoriteTracks)
+    console.log(favoriteAlbums)
+    
     return (
       <>
         <h1>Favorites</h1>
