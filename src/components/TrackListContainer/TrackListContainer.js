@@ -12,7 +12,7 @@ class TrackListContainer extends Component {
     return (
       <section className="content">
         <section>
-          <h2>Spngs</h2>
+          <h2>Songs</h2>
           <Link to="/tracks">
             <p>View All</p>
           </Link>

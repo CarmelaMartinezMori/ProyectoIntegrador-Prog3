@@ -1,0 +1,54 @@
+/* Estilo para la sección de resultados de búsqueda */
+.search-results {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilo para la lista de resultados */
+  .search-results ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  /* Estilo para cada resultado individual */
+  .search-results li {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilo para el título del resultado */
+  .search-results h4 {
+    font-size: 18px;
+    color: #333;
+  }
+  
+  /* Estilo para la información adicional del resultado */
+  .search-results p {
+    font-size: 14px;
+    color: #777;
+  }
+  
+  /* Estilo para el enlace "Go Back" */
+  .go-back-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Estilo hover para el enlace "Go Back" */
+  .go-back-button:hover {
+    background-color: #0056b3;
+  }
+  
