@@ -7,8 +7,9 @@ import Favorites from "./screens/Favorites";
 import Footer from "./components/Footer/Footer";
 import Albums from "./screens/Albums/Albums";
 import AlbumDetail from "./screens/AlbumDetail/AlbumDetail";
-import TrackDetail from "./screens/Track/TrackDetail";
+import TrackDetail from "./screens/TrackDetail/TrackDetail";
 import Tracks from "./screens/Tracks/Tracks";
+import NotFound from "./screens/NotFound/NotFound";
 
 
 class App extends Component {
@@ -25,6 +26,9 @@ class App extends Component {
           
           <Route path="/albumDetail/id/:id" exact={true} component={AlbumDetail} />
           <Route path="/trackDetail/id/:id" exact={true} component={TrackDetail} />
+
+          <Route component={NotFound} />
+          
         </Switch>
         <Footer />
       </React.Fragment>
