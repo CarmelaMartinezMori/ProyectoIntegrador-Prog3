@@ -22,17 +22,18 @@ class AlbumList extends Component {
     const { info } = this.props;
 
     return (
-        <section className="content">
+      <section className="content">
         <article>
           <Link to={`/albumDetail/id/${info.id}`}>
             <img src={info.cover} alt={info.title} />
             <div className="album-info">
               <h3>{info.title}</h3>
-              <p className={this.state.clase}>{`Artist: ${info.artist.name}, Explicit Lyrics: ${info.explicit_lyrics}`}</p>
-              <a onClick={this.toggleText}>{this.state.texto}</a>
+              <p>
+                View more
+                {` - Artist: ${info.artist.name}, Explicit Lyrics: ${info.explicit_lyrics}`}
+              </p>
             </div>
           </Link>
-          
         </article>
       </section>
     );

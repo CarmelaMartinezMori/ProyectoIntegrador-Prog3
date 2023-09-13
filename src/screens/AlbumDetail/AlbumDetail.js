@@ -94,7 +94,7 @@ class AlbumDetail extends Component {
             </ul>
             <button
               className='boton'
-              onClick={() => this.addToFavorites(info.id)}
+              onClick={() => this.addToFavorites(this.state.id)}
             >
               {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
             </button>

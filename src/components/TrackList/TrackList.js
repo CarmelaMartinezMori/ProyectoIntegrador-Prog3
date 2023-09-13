@@ -41,11 +41,12 @@ class TrackList extends Component {
           <Link to={`/trackDetail/id/${info.id}`}>
             <h3>{info.title}</h3>
             <p>{info.artist.name}</p>
-            <a onClick={this.toggleText}>{this.state.text}</a>
-            <p className={this.state.class}>Duration: {info.duration} minutes</p>
+            <p onClick={this.toggleText}>View more</p>
+            <p className={this.state.class}>
+              Duration: {info.duration} minutes
+            </p>
             <img src={info.album.cover} alt={info.title} />
           </Link>
-          
         </article>
       </section>
     );
