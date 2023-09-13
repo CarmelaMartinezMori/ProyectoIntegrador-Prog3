@@ -30,22 +30,7 @@ class TrackList extends Component {
     }
   }
 
-  handleFavorites = (id) => {
-    let storage = localStorage.getItem('favoriteTracks') || '[]';
-    let storageToArray = JSON.parse(storage);
 
-    if (!this.state.isFavorite) {
-      storageToArray.push(id.toString());
-    } else {
-      storageToArray = storageToArray.filter((elm) => elm !== id.toString());
-    }
-
-    localStorage.setItem('favoriteTracks', JSON.stringify(storageToArray));
-
-    this.setState({
-      isFavorite: !this.state.isFavorite,
-    });
-  };
 
   render() {
     const { info } = this.props;
@@ -60,9 +45,7 @@ class TrackList extends Component {
             <p className={this.state.class}>Duration: {info.duration} minutes</p>
             <img src={info.album.cover} alt={info.title} />
           </Link>
-          <button className="button" onClick={() => this.handleFavorites(info.id)}>
-            {this.state.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
-          </button>
+          
         </article>
       </section>
     );

@@ -16,22 +16,7 @@ class AlbumList extends Component {
     }));
   };
 
-  handleFavorites = (id) => {
-    let storage = localStorage.getItem('favoriteAlbums') || '[]';
-    let storageToArray = JSON.parse(storage);
-
-    if (!this.state.isFavorite) {
-      storageToArray.push(id);
-    } else {
-      storageToArray = storageToArray.filter((elm) => elm !== id);
-    }
-
-    localStorage.setItem('favoriteAlbums', JSON.stringify(storageToArray));
-
-    this.setState({
-      isFavorite: !this.state.isFavorite,
-    });
-  };
+  
 
   render() {
     const { info } = this.props;
@@ -47,9 +32,7 @@ class AlbumList extends Component {
               <a onClick={this.toggleText}>{this.state.texto}</a>
             </div>
           </Link>
-          <button className="boton" onClick={() => this.handleFavorites(info.id)}>
-            {this.state.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
-          </button>
+          
         </article>
       </section>
     );

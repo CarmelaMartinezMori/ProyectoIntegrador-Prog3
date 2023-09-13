@@ -5,15 +5,18 @@ class TrackDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      info: null,
       id: props.match.params.id,
+      info: null,
       isFavorite: false,
-      text: 'Show More',
     };
   }
 
   componentDidMount() {
-    // Cambiamos la URL de la API a la correcta
+    this.fetchTrackData();
+    this.checkFavorites();
+  }
+
+  fetchTrackData() {
     fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/track/${this.state.id}`)
       .then(response => response.json())
       .then(info => {
@@ -24,41 +27,58 @@ class TrackDetail extends Component {
       });
   }
 
-  changeText() {
-    // Toggle the text when the link is clicked
-    this.setState(prevState => ({
-      text: prevState.text === 'Show More' ? 'Show Less' : 'Show More',
-    }));
+  checkFavorites() {
+    let storage = localStorage.getItem('favoriteTracks');
+    let storageToArray = JSON.parse(storage);
+
+    if (storageToArray !== null) {
+      // Verificar si el ID del álbum ya está en la lista de favoritos
+      if (this.isItemInFavorites(storageToArray, this.state.id)) {
+        this.setState({
+          isFavorite: true,
+        });
+      }
+    }
   }
 
   addToFavorites(id) {
-    const storageKey = 'favoriteTracks'; // Use 'favoriteTracks' key
-    let storage = localStorage.getItem(storageKey);
+    let storage = localStorage.getItem('favoriteTracks');
+
     if (!this.state.isFavorite) {
-      // If not in favorites, add it
-      const idInArray = storage ? JSON.parse(storage) : [];
-      idInArray.push(id);
-  
-      // Update local storage
-      localStorage.setItem(storageKey, JSON.stringify(idInArray));
-  
+      if (storage === null) {
+        let idInArray = [id];
+        let arrayToString = JSON.stringify(idInArray);
+        localStorage.setItem('favoriteTracks', arrayToString);
+      } else {
+        let fromStringToArray = JSON.parse(storage);
+        
+        // Verificar si el ID del álbum ya está en la lista de favoritos
+        if (!this.isItemInFavorites(fromStringToArray, id)) {
+          fromStringToArray.push(id);
+          let arrayToString = JSON.stringify(fromStringToArray);
+          localStorage.setItem('favoriteTracks', arrayToString);
+        }
+      }
+
       this.setState({
         isFavorite: true,
       });
     } else {
-      // If already in favorites, remove it
-      let storageToArray = storage ? JSON.parse(storage) : [];
-      const filteredArray = storageToArray.filter((elm) => elm !== id);
-  
-      // Update local storage
-      localStorage.setItem(storageKey, JSON.stringify(filteredArray));
-  
+      let storageToArray = JSON.parse(storage);
+      let filteredArray = storageToArray.filter((elm) => elm !== id);
+      let filteredToString = JSON.stringify(filteredArray);
+      localStorage.setItem('favoriteTracks', filteredToString);
+
       this.setState({
         isFavorite: false,
       });
     }
   }
 
+  isItemInFavorites(favoritesArray, id) {
+    return favoritesArray.includes(id);
+  }
+  
   render() {
     return (
       this.state.info ? (
@@ -69,12 +89,7 @@ class TrackDetail extends Component {
           <img className='imagen' src={this.state.info.album.cover_medium} alt={this.state.info.album.title} />
           <iframe src={this.state.info.preview} title="Audio Preview" />
 
-          <a onClick={() => this.changeText()} className='more'>{this.state.text}</a>
-          <section className='extra'>
-            
-          </section>
-
-          <button className='boton' onClick={() => this.addToFavorites(this.state.info.id)}>
+          <button className='boton' onClick={() => this.addToFavorites(this.state.id)}>
             {this.state.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
           </button>
         </article>

@@ -28,8 +28,8 @@ class AlbumDetail extends Component {
     let storageToArray = JSON.parse(storage);
 
     if (storageToArray !== null) {
-      let isAlbumInArray = storageToArray.includes(this.state.id);
-      if (isAlbumInArray) {
+      // Verificar si el ID del álbum ya está en la lista de favoritos
+      if (this.isItemInFavorites(storageToArray, this.state.id)) {
         this.setState({
           isFavorite: true,
         });
@@ -47,9 +47,13 @@ class AlbumDetail extends Component {
         localStorage.setItem('favoriteAlbums', arrayToString);
       } else {
         let fromStringToArray = JSON.parse(storage);
-        fromStringToArray.push(id);
-        let arrayToString = JSON.stringify(fromStringToArray);
-        localStorage.setItem('favoriteAlbums', arrayToString);
+        
+        // Verificar si el ID del álbum ya está en la lista de favoritos
+        if (!this.isItemInFavorites(fromStringToArray, id)) {
+          fromStringToArray.push(id);
+          let arrayToString = JSON.stringify(fromStringToArray);
+          localStorage.setItem('favoriteAlbums', arrayToString);
+        }
       }
 
       this.setState({
@@ -65,6 +69,10 @@ class AlbumDetail extends Component {
         isFavorite: false,
       });
     }
+  }
+
+  isItemInFavorites(favoritesArray, id) {
+    return favoritesArray.includes(id);
   }
 
   render() {

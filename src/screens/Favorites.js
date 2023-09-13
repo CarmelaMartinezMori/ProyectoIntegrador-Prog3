@@ -12,11 +12,11 @@ class Favorites extends Component {
   }
 
   componentDidMount() {
-    this.loadFavoriteTracks();
-    this.loadFavoriteAlbums();
+    this.loadFavorites();
   }
 
-  loadFavoriteTracks() {
+  loadFavorites() {
+    // Cargar favoritos de canciones
     const storedTracks = localStorage.getItem('favoriteTracks');
     if (storedTracks) {
       const trackIds = JSON.parse(storedTracks);
@@ -24,10 +24,23 @@ class Favorites extends Component {
       Promise.all(trackIds.map((id) => this.fetchTrackInfo(id)))
         .then((trackInfoArray) => {
           this.setState({ favoriteTracks: trackInfoArray });
-          
         })
         .catch((error) => {
           console.error('Error fetching favorite tracks:', error);
+        });
+    }
+
+    // Cargar favoritos de álbumes
+    const storedAlbums = localStorage.getItem('favoriteAlbums');
+    if (storedAlbums) {
+      const albumIds = JSON.parse(storedAlbums);
+
+      Promise.all(albumIds.map((id) => this.fetchAlbumInfo(id)))
+        .then((albumInfoArray) => {
+          this.setState({ favoriteAlbums: albumInfoArray });
+        })
+        .catch((error) => {
+          console.error('Error fetching favorite albums:', error);
         });
     }
   }
@@ -45,21 +58,6 @@ class Favorites extends Component {
       });
   }
 
-  loadFavoriteAlbums() {
-    const storedAlbums = localStorage.getItem('favoriteAlbums');
-    if (storedAlbums) {
-      const albumIds = JSON.parse(storedAlbums);
-
-      Promise.all(albumIds.map((id) => this.fetchAlbumInfo(id)))
-        .then((albumInfoArray) => {
-          this.setState({ favoriteAlbums: albumInfoArray });
-        })
-        .catch((error) => {
-          console.error('Error fetching favorite albums:', error);
-        });
-    }
-  }
-
   fetchAlbumInfo(albumId) {
     return fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/album/${albumId}`)
       .then((response) => response.json())
@@ -73,14 +71,28 @@ class Favorites extends Component {
       });
   }
 
+  clearFavorites() {
+    // Limpiar favoritos eliminando las claves de almacenamiento local
+    localStorage.removeItem('favoriteTracks');
+    localStorage.removeItem('favoriteAlbums');
+
+    // Actualizar el estado para reflejar que no hay favoritos
+    this.setState({
+      favoriteTracks: [],
+      favoriteAlbums: [],
+    });
+  }
+
   render() {
     const { favoriteTracks, favoriteAlbums } = this.state;
-    console.log(favoriteTracks)
-    console.log(favoriteAlbums)
+    const hasFavorites = favoriteTracks.length > 0 || favoriteAlbums.length > 0;
     
     return (
       <>
         <h1>Favorites</h1>
+        {hasFavorites && (
+          <button onClick={() => this.clearFavorites()}>Clear All Favorites</button>
+        )}
         {favoriteTracks.length > 0 && (
           <div>
             <h2>Favorite Tracks</h2>
@@ -93,7 +105,7 @@ class Favorites extends Component {
             <AlbumListContainer data={favoriteAlbums} />
           </div>
         )}
-        {(favoriteTracks.length === 0 && favoriteAlbums.length === 0) && (
+        {!hasFavorites && (
           <h3>You have no favorite tracks or albums.</h3>
         )}
       </>
