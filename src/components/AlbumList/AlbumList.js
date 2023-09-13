@@ -40,7 +40,6 @@ class AlbumList extends Component {
         <section className="content">
         <article>
           <Link to={`/albumDetail/id/${info.id}`}>
-            {/* Aquí envolvemos todo el contenido excepto el botón */}
             <img src={info.cover} alt={info.title} />
             <div className="album-info">
               <h3>{info.title}</h3>
@@ -48,8 +47,6 @@ class AlbumList extends Component {
               <a onClick={this.toggleText}>{this.state.texto}</a>
             </div>
           </Link>
-
-          {/* El botón "Add to favorites" no está dentro del <Link> */}
           <button className="boton" onClick={() => this.handleFavorites(info.id)}>
             {this.state.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
           </button>

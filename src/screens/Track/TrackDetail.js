@@ -7,16 +7,20 @@ class TrackDetail extends Component {
     this.state = {
       info: null,
       id: props.match.params.id,
-      isFavorite: false, // Initialize isFavorite state
-      text: 'Show More', // Initialize text state
+      isFavorite: false,
+      text: 'Show More',
     };
   }
 
   componentDidMount() {
-    fetch(`https://api.allorigins.win/raw?url=https://api.deezer.com/track/${this.state.id}`)
-      .then(data => data.json())
+    // Cambiamos la URL de la API a la correcta
+    fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/track/${this.state.id}`)
+      .then(response => response.json())
       .then(info => {
         this.setState({ info: info });
+      })
+      .catch(error => {
+        console.error('Error fetching track details:', error);
       });
   }
 
@@ -54,7 +58,6 @@ class TrackDetail extends Component {
       });
     }
   }
-  
 
   render() {
     return (
