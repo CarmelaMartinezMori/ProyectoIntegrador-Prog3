@@ -1,10 +1,10 @@
 .content{
-    background-color:rgb(134, 157, 161);
+    background-color:#121212;
     margin: 25px;
     padding: 50px;
     color:rgb(35, 34, 52);
     border-radius: 20px;
-    border: solid 5px rgb(66, 94, 112);
+    border: solid 2px #252525;
 
 }
 p.hidden{

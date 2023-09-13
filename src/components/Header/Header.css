@@ -1,47 +1,93 @@
 /* Header.css */
 body {
-  margin: 0; 
-  padding: 0; 
-  font-family: Arial, Helvetica, sans-serif; /* Cambia la tipografía para todo el cuerpo */
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .nav {
   display: flex;
-  flex-direction: column; 
-  align-items: center; 
-  background-color: #000; 
+  flex-direction: column;
+  align-items: center;
+  background-color: #000;
   list-style: none;
-  padding: 20px; 
-  text-align: center; 
+  padding: 10px 0;
+  text-align: center;
 }
 
 .logo {
-  border-radius: 50%; 
-  width: 60px;
-  height: 60px; 
-  margin-bottom: 10px; 
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.3s;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.logo:hover {
+  color: rgb(30, 215, 96);
 }
 
 .nav a {
   text-decoration: none;
-  color: white; 
-  font-size: 18px; 
-  margin-bottom: 10px; 
+  color: white;
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
 /* Media Query para pantallas más grandes */
 @media (min-width: 768px) {
   .nav {
-    flex-direction: row; 
-    justify-content: flex-start; 
-    height: auto; 
+    flex-direction: row;
+    justify-content: flex-start;
+    height: auto;
   }
 
   .logo {
-    margin-right: 25px; 
+    margin-right: 25px;
+    margin-left: 20px;
   }
 
   .nav a {
-    margin-right: 30px; 
+    margin-right: 30px;
+  }
+}
+
+/* Media Query para pantallas medianas */
+@media (min-width: 481px) and (max-width: 767px) {
+  .nav {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .logo {
+    margin-right: 15px;
+    margin-left: 20px;
+  }
+
+  .nav a {
+    margin-right: 10px; /* Añadido margen derecho */
+  }
+}
+
+/* Media Query para pantallas pequeñas (Mobile First) */
+@media (max-width: 480px) {
+  .nav {
+    flex-direction: column;
+  }
+
+  .logo {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .nav a {
+    margin-right: 0;
   }
 }

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import './home.css';
 import AlbumListContainer from '../../components/AlbumListContainer/AlbumListContainer';
 import TrackListContainer from '../../components/TrackListContainer/TrackListContainer';
-import './home.css';
+
 
 class Home extends Component {
   constructor(props) {
@@ -10,7 +12,8 @@ class Home extends Component {
       albums: [],
       tracks: [],
       value: '',
-      searchResults: [], // Inicialmente, los resultados de búsqueda están vacíos.
+      searchResults: [],
+      topResults: [], // Cambiamos el nombre del estado para los mejores resultados
     };
   }
 
@@ -33,16 +36,18 @@ class Home extends Component {
       // Si no se ha ingresado nada en el campo de búsqueda, no se hace nada
       return;
     }
-  
+
     // Realiza la búsqueda y el filtrado en la API de Deezer
     const searchTerm = this.state.value.toLowerCase();
-  
-    fetch(`https://api.allorigins.win/raw?url=https://api.deezer.com/search?q=${searchTerm}`)
+
+    fetch(`https://api.allorigins.win/raw?url=https://api.deezer.com/search?q=${searchTerm}&limit=10&type=album,track`)
       .then(response => response.json())
       .then(data => {
         console.log(data, 'search');
+        // Agregamos todos los resultados a la sección de "Top Results"
         this.setState({
           searchResults: data.data,
+          topResults: data.data,
         });
       })
       .catch(error => console.log(error));
@@ -52,17 +57,8 @@ class Home extends Component {
     this.setState({ value: event.target.value });
   }
 
-  handleGoBack = () => {
-    this.props.history.push('/'); // Redirige a la vista predeterminada
-    // Limpia el campo de búsqueda y restaura los datos predeterminados de top albums y tracks
-    this.setState({
-      value: '',
-      searchResults: [],
-    });
-  };
-
   render() {
-    const { searchResults } = this.state;
+    const { searchResults, topResults } = this.state;
 
     return (
       <div className='search-home'>
@@ -72,31 +68,32 @@ class Home extends Component {
           <button type="submit">Search</button>
         </form>
         <section>
-          {searchResults.length > 0 ? (
-            // Renderiza los resultados de búsqueda directamente
-            <div className="search-results">
-              <button className="go-back-button" onClick={this.handleGoBack}>Go Back</button>
-              <h3 className="search-results-title">Search Results:</h3>
-              <ul className="search-results-list">
-                {searchResults.map((result) => (
-                  <li key={result.id} className="search-result-item">
-                    <img src={result.album.cover}/>
-                    <h4 className="search-result-title">{result.title}</h4>
-                    <p className="search-result-artist">Artist: {result.artist.name}</p>
-                    {/* Agrega aquí más detalles de los resultados si es necesario */}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : (
-            // Renderiza listas de canciones y álbumes predeterminadas
-            <React.Fragment>
-              <h3>Top Albums:</h3>
-              <AlbumListContainer data={this.state.albums} />
-              <h3>Top Tracks:</h3>
-              <TrackListContainer data={this.state.tracks} />
-            </React.Fragment>
-          )}
+          <div className="search-results">
+            {searchResults.length > 0 ? (
+              <React.Fragment>
+                <div className="top-results">
+                  <h3>Top Results:</h3>
+                  <ul className="search-results-list">
+                    {topResults.map((result) => (
+                      <li key={result.id} className="search-result-item">
+                        <Link to={result.type === 'track' ? `/trackDetail/id/${result.id}` : `/albumDetail/id/${result.id}`}>
+                          <img src={result.album.cover} alt={result.title} />
+                          <h4 className="search-result-title">{result.title}</h4>
+                          <p className="search-result-artist">Artist: {result.artist.name}</p>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </React.Fragment>
+            ) : (
+              // Renderiza listas de canciones y álbumes predeterminadas si no se realiza una búsqueda
+              <React.Fragment>
+                <AlbumListContainer data={this.state.albums} />
+                <TrackListContainer data={this.state.tracks} />
+              </React.Fragment>
+            )}
+          </div>
         </section>
       </div>
     );

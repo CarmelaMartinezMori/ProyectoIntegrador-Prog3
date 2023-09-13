@@ -1,54 +1,94 @@
+/* Estilo para la sección de búsqueda */
+.search-home {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Estilo para el formulario de búsqueda */
+.search-home form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Estilo para el input de búsqueda */
+.search-home input[type="text"] {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Estilo para el botón de búsqueda */
+.search-home button[type="submit"] {
+  margin-left: 10px;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Estilo hover para el botón de búsqueda */
+.search-home button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
 /* Estilo para la sección de resultados de búsqueda */
 .search-results {
-    margin-top: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #0e0e0e; /* Color de fondo similar al de Spotify */
+  display: flex;
+  flex-wrap: wrap; /* Permite que las tarjetas se ajusten automáticamente a las filas */
+  justify-content: space-between; /* Espacio uniforme entre las tarjetas */
+}
+
+/* Estilo para cada tarjeta de resultado */
+.search-results .search-result-item {
+  flex-basis: calc(20% - 20px); /* Establece el ancho de cada tarjeta en un 20% del contenedor con un margen de 20px entre tarjetas */
+  background-color: #121212; /* Color de fondo similar al de Spotify */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 10px; /* Reducimos el espacio interno de la tarjeta */
+  box-sizing: border-box;
+  margin-bottom: 20px; /* Agrega espacio entre las tarjetas */
+  min-width: 120px; /* Ancho mínimo para las tarjetas */
+  max-width: 160px; /* Ancho máximo para las tarjetas */
+  text-align: center; /* Centra el contenido en la tarjeta */
+}
+
+/* Estilo para la imagen del resultado */
+.search-results .search-result-item img {
+  max-width: 100%; /* La imagen no excederá el ancho de la tarjeta */
+  height: auto; /* La altura se ajusta automáticamente */
+  margin-bottom: 10px; /* Agrega espacio entre la imagen y el contenido */
+}
+
+
+/* Estilo para el título del resultado */
+.search-results .search-result-title {
+  font-size: 18px;
+  color: #fff; /* Color de texto blanco */
+  margin: 0;
+}
+
+/* Estilo para la información adicional del resultado */
+.search-results .search-result-artist {
+  font-size: 14px;
+  color: #b3b3b3; /* Color de texto gris claro similar al de Spotify */
+  margin: 0;
+}
+
+/* Media Query para pantallas medianas y grandes */
+@media (max-width: 480px) {
+  /* Para pantallas pequeñas, cambia el diseño a una tarjeta por fila */
+  .search-results .search-result-item {
+    flex-basis: calc(50% - 20px); /* Tarjetas de ancho del 50% con margen entre ellas */
   }
-  
-  /* Estilo para la lista de resultados */
-  .search-results ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  /* Estilo para cada resultado individual */
-  .search-results li {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    background-color: #fff;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Estilo para el título del resultado */
-  .search-results h4 {
-    font-size: 18px;
-    color: #333;
-  }
-  
-  /* Estilo para la información adicional del resultado */
-  .search-results p {
-    font-size: 14px;
-    color: #777;
-  }
-  
-  /* Estilo para el enlace "Go Back" */
-  .go-back-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Estilo hover para el enlace "Go Back" */
-  .go-back-button:hover {
-    background-color: #0056b3;
-  }
-  
+}
