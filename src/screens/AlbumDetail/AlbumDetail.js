@@ -1,5 +1,7 @@
+// AlbumDetail.js
 import React, { Component } from 'react';
-import './albumDetail.css'
+import { Link } from 'react-router-dom';
+import './albumDetail.css';
 
 class AlbumDetail extends Component {
   constructor(props) {
@@ -7,7 +9,6 @@ class AlbumDetail extends Component {
     this.state = {
       id: this.props.match.params.id,
       info: null,
-      isFavorite: false,
     };
   }
 
@@ -39,36 +40,20 @@ class AlbumDetail extends Component {
 
   addToFavorites(id) {
     let storage = localStorage.getItem('favoriteAlbums');
+    let storageToArray = JSON.parse(storage) || [];
 
-    if (!this.state.isFavorite) {
-      if (storage === null) {
-        let idInArray = [id];
-        let arrayToString = JSON.stringify(idInArray);
-        localStorage.setItem('favoriteAlbums', arrayToString);
-      } else {
-        let fromStringToArray = JSON.parse(storage);
-        
-        // Verificar si el ID del álbum ya está en la lista de favoritos
-        if (!this.isItemInFavorites(fromStringToArray, id)) {
-          fromStringToArray.push(id);
-          let arrayToString = JSON.stringify(fromStringToArray);
-          localStorage.setItem('favoriteAlbums', arrayToString);
-        }
-      }
-
-      this.setState({
-        isFavorite: true,
-      });
+    if (!this.isItemInFavorites(storageToArray, id)) {
+      storageToArray.push(id);
     } else {
-      let storageToArray = JSON.parse(storage);
-      let filteredArray = storageToArray.filter((elm) => elm !== id);
-      let filteredToString = JSON.stringify(filteredArray);
-      localStorage.setItem('favoriteAlbums', filteredToString);
-
-      this.setState({
-        isFavorite: false,
-      });
+      storageToArray = storageToArray.filter(elm => elm !== id);
     }
+
+    localStorage.setItem('favoriteAlbums', JSON.stringify(storageToArray));
+
+    // Actualiza el estado local en función del almacenamiento local
+    this.setState({
+      isFavorite: !this.state.isFavorite,
+    });
   }
 
   isItemInFavorites(favoritesArray, id) {
@@ -76,7 +61,7 @@ class AlbumDetail extends Component {
   }
 
   render() {
-    const { info, isFavorite } = this.state;
+    const { info } = this.state;
 
     return (
       <div className='container'>
@@ -94,9 +79,9 @@ class AlbumDetail extends Component {
             </ul>
             <button
               className='boton'
-              onClick={() => this.addToFavorites(this.state.id)}
+              onClick={() => this.addToFavorites(info.id)}
             >
-              {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
+              {this.isItemInFavorites(JSON.parse(localStorage.getItem('favoriteAlbums') || '[]'), info.id) ? 'Remove from Favorites' : 'Add to Favorites'}
             </button>
           </div>
         ) : (

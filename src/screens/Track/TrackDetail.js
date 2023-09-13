@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+// TrackDetail.js
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './trackDetail.css';
 
 class TrackDetail extends Component {
@@ -7,7 +9,7 @@ class TrackDetail extends Component {
     this.state = {
       id: props.match.params.id,
       info: null,
-      isFavorite: false,
+      isFavorite: false, // No se utilizará para el seguimiento de favoritos
     };
   }
 
@@ -32,7 +34,7 @@ class TrackDetail extends Component {
     let storageToArray = JSON.parse(storage);
 
     if (storageToArray !== null) {
-      // Verificar si el ID del álbum ya está en la lista de favoritos
+      // Verificar si el ID de la canción ya está en la lista de favoritos
       if (this.isItemInFavorites(storageToArray, this.state.id)) {
         this.setState({
           isFavorite: true,
@@ -43,42 +45,26 @@ class TrackDetail extends Component {
 
   addToFavorites(id) {
     let storage = localStorage.getItem('favoriteTracks');
+    let storageToArray = JSON.parse(storage) || [];
 
-    if (!this.state.isFavorite) {
-      if (storage === null) {
-        let idInArray = [id];
-        let arrayToString = JSON.stringify(idInArray);
-        localStorage.setItem('favoriteTracks', arrayToString);
-      } else {
-        let fromStringToArray = JSON.parse(storage);
-        
-        // Verificar si el ID del álbum ya está en la lista de favoritos
-        if (!this.isItemInFavorites(fromStringToArray, id)) {
-          fromStringToArray.push(id);
-          let arrayToString = JSON.stringify(fromStringToArray);
-          localStorage.setItem('favoriteTracks', arrayToString);
-        }
-      }
-
-      this.setState({
-        isFavorite: true,
-      });
+    if (!this.isItemInFavorites(storageToArray, id)) {
+      storageToArray.push(id);
     } else {
-      let storageToArray = JSON.parse(storage);
-      let filteredArray = storageToArray.filter((elm) => elm !== id);
-      let filteredToString = JSON.stringify(filteredArray);
-      localStorage.setItem('favoriteTracks', filteredToString);
-
-      this.setState({
-        isFavorite: false,
-      });
+      storageToArray = storageToArray.filter(elm => elm !== id);
     }
+
+    localStorage.setItem('favoriteTracks', JSON.stringify(storageToArray));
+
+    // Actualiza el estado local en función del almacenamiento local
+    this.setState({
+      isFavorite: !this.state.isFavorite,
+    });
   }
 
   isItemInFavorites(favoritesArray, id) {
     return favoritesArray.includes(id);
   }
-  
+
   render() {
     return (
       this.state.info ? (
@@ -90,7 +76,7 @@ class TrackDetail extends Component {
           <iframe src={this.state.info.preview} title="Audio Preview" />
 
           <button className='boton' onClick={() => this.addToFavorites(this.state.id)}>
-            {this.state.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+            {this.isItemInFavorites(JSON.parse(localStorage.getItem('favoriteTracks') || '[]'), this.state.id) ? 'Remove from favorites' : 'Add to favorites'}
           </button>
         </article>
       ) : null

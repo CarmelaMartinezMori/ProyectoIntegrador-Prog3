@@ -8,7 +8,6 @@ class TrackList extends Component {
     this.state = {
       text: 'View more',
       class: 'hidden',
-      isFavorite: false,
     };
   }
 
@@ -19,21 +18,13 @@ class TrackList extends Component {
     }));
   };
 
-  componentDidMount() {
-    let storage = localStorage.getItem('favoriteTracks') || '[]';
-    let storageToArray = JSON.parse(storage);
-
-    if (storageToArray.includes(this.props.info.id.toString())) {
-      this.setState({
-        isFavorite: true,
-      });
-    }
-  }
-
-
-
   render() {
     const { info } = this.props;
+
+    if (!info) {
+      // Manejar el caso en el que info es nulo o no está definido
+      return null;
+    }
 
     return (
       <section className="content">
@@ -41,10 +32,8 @@ class TrackList extends Component {
           <Link to={`/trackDetail/id/${info.id}`}>
             <h3>{info.title}</h3>
             <p>{info.artist.name}</p>
-            <p onClick={this.toggleText}>View more</p>
-            <p className={this.state.class}>
-              Duration: {info.duration} minutes
-            </p>
+            <a onClick={this.toggleText}>{this.state.text}</a>
+            <p className={this.state.class}>Duration: {info.duration} minutes</p>
             <img src={info.album.cover} alt={info.title} />
           </Link>
         </article>

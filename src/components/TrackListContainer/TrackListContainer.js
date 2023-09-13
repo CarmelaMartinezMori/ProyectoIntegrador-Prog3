@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './trackListContainer.css';
 import { Link } from 'react-router-dom';
 import TrackList from '../TrackList/TrackList';
 
@@ -16,14 +15,16 @@ class TrackListContainer extends Component {
           <Link to="/tracks">
             <p>View All</p>
           </Link>
-          {/* Check if data is available */}
           {this.props.data.length <= 0 ? (
             <h1>Loading...</h1>
           ) : (
-            // Map through the data and render AlbumList component
             this.props.data.map((track, i) => (
               <article key={i}>
-                <TrackList info={track} />
+                <TrackList
+                  info={track}
+                  favoriteTracks={this.props.favoriteTracks}
+                  updateFavorites={this.props.updateFavorites}
+                />
               </article>
             ))
           )}

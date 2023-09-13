@@ -50,7 +50,7 @@ class Favorites extends Component {
       .then((response) => response.json())
       .then((data) => {
         if (!data.error) {
-          return data;
+          return { ...data, isFavorite: true }; // Agrega la propiedad isFavorite
         } else {
           console.error('Error fetching track info:', data.error);
           return null;
@@ -83,10 +83,17 @@ class Favorites extends Component {
     });
   }
 
+  // Método para actualizar la lista de canciones favoritas después de eliminar una canción
+  updateFavoriteTracks(updatedTracks) {
+    this.setState({
+      favoriteTracks: updatedTracks,
+    });
+  }
+
   render() {
     const { favoriteTracks, favoriteAlbums } = this.state;
     const hasFavorites = favoriteTracks.length > 0 || favoriteAlbums.length > 0;
-    
+
     return (
       <>
         <h1>Favorites</h1>
@@ -96,7 +103,11 @@ class Favorites extends Component {
         {favoriteTracks.length > 0 && (
           <div>
             <h2>Favorite Tracks</h2>
-            <TrackListContainer data={favoriteTracks} />
+            {/* Pasa el método de actualización como prop */}
+            <TrackListContainer
+              data={favoriteTracks}
+              updateFavorites={(updatedTracks) => this.updateFavoriteTracks(updatedTracks)}
+            />
           </div>
         )}
         {favoriteAlbums.length > 0 && (
