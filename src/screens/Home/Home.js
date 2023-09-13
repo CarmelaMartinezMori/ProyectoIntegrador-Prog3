@@ -13,12 +13,12 @@ class Home extends Component {
       tracks: [],
       value: '',
       searchResults: [],
-      topResults: [], // Cambiamos el nombre del estado para los mejores resultados
+      topResults: [], 
     };
   }
 
   componentDidMount() {
-    // Fetch los datos de las canciones y álbumes del top de la API aquí
+    // Fetch los datos de las canciones y álbumes del top de la API 
     fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks?limit=20')
       .then(res => res.json())
       .then(data => this.setState({ tracks: data.data }))

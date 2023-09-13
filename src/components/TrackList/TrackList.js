@@ -6,20 +6,19 @@ class TrackList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: 'View more',
-      class: 'hidden',
+      isExpanded: false,
     };
   }
 
-  toggleText = () => {
+  toggleExpansion = () => {
     this.setState((prevState) => ({
-      text: prevState.text === 'View more' ? 'View less' : 'View more',
-      class: prevState.class === 'hidden' ? 'show' : 'hidden',
+      isExpanded: !prevState.isExpanded,
     }));
   };
 
   render() {
     const { info } = this.props;
+    const { isExpanded } = this.state;
 
     if (!info) {
       // Manejar el caso en el que info es nulo o no está definido
@@ -27,15 +26,23 @@ class TrackList extends Component {
     }
 
     return (
-      <section className="content">
+      <section className={`content ${isExpanded ? 'expanded' : ''}`}>
         <article>
           <Link to={`/trackDetail/id/${info.id}`}>
-            <h3>{info.title}</h3>
-            <p>{info.artist.name}</p>
-            <a onClick={this.toggleText}>{this.state.text}</a>
-            <p className={this.state.class}>Duration: {info.duration} minutes</p>
             <img src={info.album.cover} alt={info.title} />
+            <h3> {info.title}</h3>
           </Link>
+          
+          <button onClick={this.toggleExpansion}>
+            {isExpanded ? 'View less' : 'View more'}
+          </button>
+          {isExpanded && (
+            <>
+              <p>{info.artist.name}</p>
+              <p>Duration: {info.duration} minutes</p>
+            </>
+          )}
+          <Link to={`/trackDetail/id/${info.id}`}>Ir a detalle</Link>
         </article>
       </section>
     );
