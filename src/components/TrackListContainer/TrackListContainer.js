@@ -13,13 +13,13 @@ class TrackListContainer extends Component {
         <section>
           <h2>Songs</h2>
           <Link to="/tracks">
-            <p>View All</p>
-          </Link>
+          <button className="button">View All</button>
+        </Link>
           {this.props.data.length <= 0 ? (
             <h1>Loading...</h1>
           ) : (
             this.props.data.map((track, i) => (
-              <article key={i}>
+              <article className='trackList' key={i}>
                 <TrackList
                   info={track}
                   favoriteTracks={this.props.favoriteTracks}

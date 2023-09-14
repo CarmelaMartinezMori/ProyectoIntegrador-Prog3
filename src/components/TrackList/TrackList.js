@@ -26,25 +26,26 @@ class TrackList extends Component {
     }
 
     return (
-      <section className={`content ${isExpanded ? 'expanded' : ''}`}>
-        <article>
-          <Link to={`/trackDetail/id/${info.id}`}>
-            <img src={info.album.cover} alt={info.title} />
-            <h3> {info.title}</h3>
-          </Link>
-          
-          <button onClick={this.toggleExpansion}>
-            {isExpanded ? 'View less' : 'View more'}
-          </button>
-          {isExpanded && (
-            <>
-              <p>{info.artist.name}</p>
-              <p>Duration: {info.duration} minutes</p>
-            </>
-          )}
-          <Link to={`/trackDetail/id/${info.id}`}>Ir a detalle</Link>
-        </article>
-      </section>
+      <React.Fragment>
+        <section className={`content ${isExpanded ? "expanded" : ""}`}>
+          <article className='card'>
+            <Link to={`/trackDetail/id/${info.id}`}>
+              <img src={info.album.cover} alt={info.title} />
+              <h3> {info.title}</h3>
+            </Link>
+            <button onClick={this.toggleExpansion}>
+              {isExpanded ? "View less" : "View more"}
+            </button>
+            {isExpanded && (
+              <>
+                <p>{info.artist.name}</p>
+                <p>Duration: {info.duration} minutes</p>
+              </>
+            )}
+            <Link to={`/trackDetail/id/${info.id}`}>Ir a detalle</Link>
+          </article>
+        </section>
+      </React.Fragment>
     );
   }
 }

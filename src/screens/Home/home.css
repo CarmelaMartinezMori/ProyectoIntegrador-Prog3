@@ -1,7 +1,15 @@
 /* Estilo para la sección de búsqueda */
+
+.content{
+  border: none;
+}
+
 .search-home {
   text-align: center;
   padding: 20px;
+  color:white;
+  background-color: black;
+
 }
 
 /* Estilo para el formulario de búsqueda */
@@ -10,6 +18,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  color: white;
 }
 
 /* Estilo para el input de búsqueda */
@@ -27,7 +36,7 @@
   margin-left: 10px;
   padding: 10px 20px;
   font-size: 18px;
-  background-color: #007bff;
+  background-color: rgb(30, 215, 96);
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -37,7 +46,7 @@
 
 /* Estilo hover para el botón de búsqueda */
 .search-home button[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: #26ed8a;
 }
 
 /* Estilo para la sección de resultados de búsqueda */
@@ -48,12 +57,13 @@
   display: flex;
   flex-wrap: wrap; /* Permite que las tarjetas se ajusten automáticamente a las filas */
   justify-content: space-between; /* Espacio uniforme entre las tarjetas */
+  
 }
 
 /* Estilo para cada tarjeta de resultado */
 .search-results .search-result-item {
   flex-basis: calc(20% - 20px); /* Establece el ancho de cada tarjeta en un 20% del contenedor con un margen de 20px entre tarjetas */
-  background-color: #121212; /* Color de fondo similar al de Spotify */
+  background-color: #121212; 
   border-radius: 5px; /* Bordes redondeados */
   padding: 10px; /* Reducimos el espacio interno de la tarjeta */
   box-sizing: border-box;
@@ -61,7 +71,10 @@
   min-width: 120px; /* Ancho mínimo para las tarjetas */
   max-width: 160px; /* Ancho máximo para las tarjetas */
   text-align: center; /* Centra el contenido en la tarjeta */
+  list-style: none;
+  text-decoration: none;
 }
+
 
 /* Estilo para la imagen del resultado */
 .search-results .search-result-item img {

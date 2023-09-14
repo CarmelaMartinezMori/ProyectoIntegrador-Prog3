@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import AlbumListContainer from '../components/AlbumListContainer/AlbumListContainer';
-import TrackListContainer from '../components/TrackListContainer/TrackListContainer';
+import AlbumListContainer from '../../components/AlbumListContainer/AlbumListContainer';
+import TrackListContainer from '../../components/TrackListContainer/TrackListContainer';
+import './favorites.css'
 
 class Favorites extends Component {
   constructor(props) {

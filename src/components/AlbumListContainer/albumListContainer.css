@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+.content {
+    background-color: #0e0e0e;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se muestren en filas */
+    justify-content: flex-start; /* Alinea los elementos a la izquierda */
+  }
+  
+  .content h2 {
+    color: white;
+    font-size: 40px;
+  }
+  
+  /* Estilos opcionales para espaciado entre elementos */
+  .article {
+    margin-right: 20px; /* Espacio entre elementos (ajusta según tus preferencias) */
+  }
+  
+  /* Estilo para el botón "View All" */
+.button {
+    background-color: rgb(30, 215, 96); /* Cambia el color de fondo al verde deseado */
+    color: #fff; /* Color de texto blanco */
+    padding: 10px 20px;
+    font-size: 18px;
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Estilo hover para el botón "View All" */
+  .button:hover {
+    background-color: #26ed8a; /* Cambia el color de fondo al verde claro en hover */
+  }
+
+  
+  /* Media Queries para pantallas medianas (tablets) */
+  @media (max-width: 768px) {
+    .content {
+      justify-content: center; /* Centra los elementos en pantallas medianas */
+    }
+  }
+  
+  /* Media Queries para pantallas pequeñas (móviles) */
+  @media (max-width: 480px) {
+    .content {
+      flex-direction: column; /* Muestra los elementos en una sola columna en pantallas pequeñas */
+      align-items: center; /* Centra los elementos verticalmente en pantallas pequeñas */
+    }
+  
+    .article {
+      margin-right: 0; /* Elimina el margen en pantallas pequeñas */
+      margin-bottom: 20px; /* Agrega espacio entre elementos en pantallas pequeñas */
+    }
+  }
+  

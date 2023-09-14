@@ -61,14 +61,14 @@ class Home extends Component {
     const { searchResults, topResults } = this.state;
 
     return (
-      <div className='search-home'>
+      <React.Fragment>
+        <div className='search-home'>
         <h2>Search:</h2>
         <form onSubmit={(event) => this.handleSearch(event)}>
           <input type="text" name="search" onChange={(event) => this.handleChange(event)} value={this.state.value} />
           <button type="submit">Search</button>
         </form>
         <section>
-          <div className="search-results">
             {searchResults.length > 0 ? (
               <React.Fragment>
                 <div className="top-results">
@@ -86,16 +86,19 @@ class Home extends Component {
                   </ul>
                 </div>
               </React.Fragment>
-            ) : (
+            ) 
+            : (
               // Renderiza listas de canciones y álbumes predeterminadas si no se realiza una búsqueda
               <React.Fragment>
                 <AlbumListContainer data={this.state.albums} />
                 <TrackListContainer data={this.state.tracks} />
               </React.Fragment>
             )}
-          </div>
+          
         </section>
       </div>
+      </React.Fragment>
+      
     );
   }
 }

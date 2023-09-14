@@ -1,30 +1,29 @@
 import React from 'react';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import AlbumList from '../AlbumList/AlbumList';
-
+import './albumListContainer.css';
 
 function AlbumListContainer(props) {
-
   return (
-    <section className='content'>
-      <section>
+    <React.Fragment>
+      <section className="content">
         <h2>Albums</h2>
-        <Link to='/albums'>
-          <p>View All</p>
+        <Link to="/albums">
+          <button className="button">View All</button>
         </Link>
-        {/* Check if data is available */}
-        {props.data.length <= 0 ? (
-          <h1>Loading...</h1>
-        ) : (
-          // Map through the data and render AlbumList component
-          props.data.map((album, i) => (
-            <article key={i}>
-              <AlbumList info={album} />
-            </article>
-          ))
-        )}
+        <div className="content">
+          {props.data.length <= 0 ? (
+            <h1>Loading...</h1>
+          ) : (
+            props.data.map((album, i) => (
+              <article className="article" key={i}>
+                <AlbumList info={album} />
+              </article>
+            ))
+          )}
+        </div>
       </section>
-    </section>
+    </React.Fragment>
   );
 }
 

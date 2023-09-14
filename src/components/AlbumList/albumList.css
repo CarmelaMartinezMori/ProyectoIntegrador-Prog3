@@ -1,24 +1,75 @@
-/* Estilos base */
+/* Estilos para dispositivos móviles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.card {
+  background-color: red; /* Cambia "red" al color de fondo rojo que prefieras */
+  margin: 25px;
+  padding: 20px; /* Ajusta el espacio interno según tus preferencias */
+  color: rgb(35, 34, 52);
+  border-radius: 20px;
+  border: solid 2px #252525;
+  max-width: 100%; /* Ancho máximo del 100% del contenedor padre */
+  width: 300px; /* Ancho automático según el contenido */
+  display: flex;
+  flex-direction: column;
+}
+
 .content {
-    background-color: #ccc; /* Fondo gris */
-    margin: 25px;
-    padding: 20px; /* Ajusta el espacio interior */
-    color: white; /* Texto blanco */
-    border-radius: 20px;
-    border: solid 5px #000;
+  height: auto; /* Ajusta la altura automáticamente al contenido */
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  padding: 10px; /* Espaciado interno */
+}
+
+/* Clase para la información dentro de la card */
+.card-info {
+  text-align: center; /* Alinea el texto al centro */
+}
+
+/* Estilos para botones */
+button {
+  background-color: white;
+  color: #333;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #333;
+  color: white;
+}
+
+/* Estilos para tablets y pantallas más grandes */
+@media (min-width: 768px) {
+  .content {
+    flex-direction: row; /* Muestra las tarjetas en fila */
+    align-items: center;
+    height: auto; /* Ajusta la altura automáticamente al contenido */
+    width: 50%;
   }
-  
-  /* Estilos para pantallas pequeñas */
-  @media (max-width: 768px) {
-    .content {
-      padding: 30px; /* Aumenta el espacio interior */
-    }
+  .card-info {
+    margin-left: 20px; /* Agrega espacio entre la imagen y la información */
+    align-items: flex-start; /* Alinea la información a la izquierda */
+    text-align: left; /* Alinea el texto a la izquierda */
   }
-  
-  /* Estilos para pantallas más grandes */
-  @media (min-width: 1200px) {
-    .content {
-      padding: 50px; /* Aumenta el espacio interior aún más */
-    }
+}
+
+/* Media query para pantallas más grandes, por ejemplo, escritorios */
+@media (min-width: 1024px) {
+  .content {
+    padding: 20px;
+    flex-direction: column; /* Vuelve a mostrar las tarjetas en columna */
+    align-items: flex-start; /* Alinea las tarjetas a la izquierda */
+    height: auto; /* Ajusta la altura automáticamente al contenido */
   }
-  
+}

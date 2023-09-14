@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TrackListContainer from '../../components/TrackListContainer/TrackListContainer';
+import './tracks.css'
 
 class Tracks extends Component {
   constructor(props) {
@@ -48,20 +49,27 @@ class Tracks extends Component {
 
   render() {
     return (
-      <div className=''>
-        <h1>Songs</h1>
-        <form onSubmit={(event) => this.handleSearch(event)}>
-          <input
-            type="text"
-            placeholder="Search Songs"
-            value={this.state.searchQuery}
-            onChange={(event) => this.setState({ searchQuery: event.target.value })} 
+      <React.Fragment>
+        <div className="content">
+          <h1>All Songs</h1>
+          <form onSubmit={(event) => this.handleSearch(event)}>
+            <input
+              type="text"
+              placeholder="Search Songs"
+              value={this.state.searchQuery}
+              onChange={(event) =>
+                this.setState({ searchQuery: event.target.value })
+              }
+            />
+            <button type="submit">Search</button>
+          </form>
+          <TrackListContainer
+            data={this.state.tracks}
+            showLoadMoreButton={false}
           />
-          <button type="submit">Search</button>
-        </form>
-        <TrackListContainer data={this.state.tracks} showLoadMoreButton={false} />
-        <button onClick={() => this.loadMoreTracks()}>Load More</button>
-      </div>
+          <button onClick={() => this.loadMoreTracks()}>Load More</button>
+        </div>
+      </React.Fragment>
     );
   }
 }

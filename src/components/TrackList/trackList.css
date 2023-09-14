@@ -1,19 +1,39 @@
+/* Estilo para todos los enlaces dentro del componente TrackList */
+/* Estilo para el fondo rojo en los elementos TrackList */
 .content{
-    background-color:#121212;
+ width: auto;
+}
+.card {
+    background-color: red; /* Cambia "red" al color de fondo rojo que prefieras */
     margin: 25px;
-    padding: 50px;
-    color:rgb(35, 34, 52);
+    padding: 20px; /* Ajusta el espacio interno según tus preferencias */
+    color: rgb(35, 34, 52);
     border-radius: 20px;
     border: solid 2px #252525;
-
-}
-p.hidden{
-    display:none
-}
-p.show{
-    display:block
-}
-.canciones{
+    max-width: 100%; /* Ancho máximo del 100% del contenedor padre */
+    width: 300px; /* Ancho automático según el contenido */
     display: flex;
-    flex-direction: row;
-}
+  flex-direction: column;
+  }
+  
+  
+.content a {
+    text-decoration: none; /* Quitar subrayado */
+    color: white; /* Texto blanco */
+  }
+  
+  /* Estilo para el botón "View more" */
+  .content button {
+    background-color: rgb(30, 215, 96); /* Fondo verde */
+    color: white; /* Texto blanco */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Estilo hover para el botón "View more" */
+  .content button:hover {
+    background-color: #26ed8a; /* Cambio de color al pasar el mouse */
+  }
+  

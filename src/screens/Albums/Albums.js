@@ -49,7 +49,7 @@ class Albums extends Component {
   render() {
     return (
       <div className='albums'>
-        <h1>Albums</h1>
+        <h1>All Albums</h1>
         <form onSubmit={(event) => this.handleSearch(event)}>
           <input
             type="text"

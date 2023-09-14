@@ -6,6 +6,7 @@ footer {
     align-items: center;
     color: white;
     font-family: sans-serif; /* Cambia la fuente a sans-serif */
+    border-top: solid 2px #151515;
   }
   
   .footer-team {

@@ -13,19 +13,18 @@ body {
   list-style: none;
   padding: 10px 0;
   text-align: center;
+  border-bottom: solid 2px #151515;
 }
 
 .logo {
-  border-radius: 50%;
   width: 100px;
   height: 100px;
-  margin-bottom: 10px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: color 0.3s;
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
   letter-spacing: 2px;
 }
@@ -39,6 +38,10 @@ body {
   color: white;
   font-size: 18px;
   margin-bottom: 10px;
+}
+
+.nav a:hover{
+  color: rgb(30, 215, 96);
 }
 
 /* Media Query para pantallas más grandes */

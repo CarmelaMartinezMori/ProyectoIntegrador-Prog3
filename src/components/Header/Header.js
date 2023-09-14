@@ -17,16 +17,18 @@ class Header extends Component {
 
   render() {
     return (
-      <nav className='nav'>
-        <Link to='/'>
-          <span className='logo'>MUSIFY</span>
-        </Link>
-        {elements.map((element, idx) => (
-          <Link to={element.route} key={idx}>
-            {element.name}
+      <React.Fragment>
+        <nav className="nav">
+          <Link to="/">
+            <span className="logo">MUSIFY</span>
           </Link>
-        ))}
-      </nav>
+          {elements.map((element, idx) => (
+            <Link to={element.route} key={idx}>
+              {element.name}
+            </Link>
+          ))}
+        </nav>
+      </React.Fragment>
     );
   }
 }

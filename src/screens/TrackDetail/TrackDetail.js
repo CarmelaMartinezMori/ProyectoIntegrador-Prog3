@@ -66,20 +66,28 @@ class TrackDetail extends Component {
   }
 
   render() {
+    const {info} = this.state
+    
     return (
-      this.state.info ? (
-        <article className='container'>
-          <h4 className='body_track'>{this.state.info.title}</h4>
-          <p className='body_track'>{this.state.info.artist.name}</p>
-          <p className='body_track'>{this.state.info.album.title}</p>
-          <img className='imagen' src={this.state.info.album.cover_medium} alt={this.state.info.album.title} />
-          <iframe src={this.state.info.preview} title="Audio Preview" />
-
-          <button className='boton' onClick={() => this.addToFavorites(this.state.id)}>
-            {this.isItemInFavorites(JSON.parse(localStorage.getItem('favoriteTracks') || '[]'), this.state.id) ? 'Remove from favorites' : 'Add to favorites'}
-          </button>
-        </article>
-      ) : null
+      <div className='container'>
+        {info ? (
+          <div className="spacer">
+            <h4 className='body_track'>{info.title}</h4>
+          <p className='body_track'>{info.artist.name}</p>
+          <p className='body_track'>{info.album.title}</p>
+          <img className='imagen' src={info.album.cover_medium} alt={this.state.info.album.title} />
+          <iframe src={info.preview} title="Audio Preview" />
+            <button
+              className='boton'
+              onClick={() => this.addToFavorites(info.id)}
+            >
+              {this.isItemInFavorites(JSON.parse(localStorage.getItem('favoriteAlbums') || '[]'), info.id) ? 'Remove from Favorites' : 'Add to Favorites'}
+            </button>
+          </div>
+        ) : (
+          <h4>Loading...</h4>
+        )}
+      </div>
     );
   }
 }
