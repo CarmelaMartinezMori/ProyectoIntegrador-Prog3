@@ -6,7 +6,7 @@ body {
   
 .content {
     background-color: #0e0e0e;
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap; /* Permite que los elementos se muestren en filas */
     justify-content: flex-start; /* Alinea los elementos a la izquierda */

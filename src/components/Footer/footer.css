@@ -7,6 +7,10 @@ footer {
     color: white;
     font-family: sans-serif; /* Cambia la fuente a sans-serif */
     border-top: solid 2px #151515;
+    bottom: 0; /* Lo coloca en la parte inferior del viewport */
+    width: 100%; /* Ancho completo del viewport */
+    height: 100px;
+    margin-top: 50px;
   }
   
   .footer-team {

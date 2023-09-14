@@ -19,7 +19,7 @@ class TrackListContainer extends Component {
             <h1>Loading...</h1>
           ) : (
             this.props.data.map((track, i) => (
-              <article className='trackList' key={i}>
+              <article className='list' key={i}>
                 <TrackList
                   info={track}
                   favoriteTracks={this.props.favoriteTracks}

@@ -7,7 +7,7 @@ body {
   
 .content {
     background-color: #0e0e0e;
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap; /* Permite que los elementos se muestren en filas */
     justify-content: flex-start; /* Alinea los elementos a la izquierda */
@@ -18,11 +18,13 @@ body {
     font-size: 40px;
   }
   
-  /* Estilos opcionales para espaciado entre elementos */
-  .article {
-    margin-right: 20px; /* Espacio entre elementos (ajusta según tus preferencias) */
-  }
   
+  .list{
+    margin-right: 20px;
+    display: flex;
+    flex-direction: row;
+  }
+
   /* Estilo para el botón "View All" */
 .button {
     background-color: rgb(30, 215, 96); /* Cambia el color de fondo al verde deseado */
@@ -41,28 +43,7 @@ body {
     background-color: #26ed8a; /* Cambia el color de fondo al verde claro en hover */
   }
 
-  .tracklist{
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .button {
-    background-color: rgb(30, 215, 96); /* Cambia el color de fondo al verde deseado */
-    color: #fff; /* Color de texto blanco */
-    padding: 10px 20px;
-    font-size: 18px;
-    text-decoration: none; /* Elimina el subrayado del enlace */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Estilo hover para el botón "View All" */
-  .button:hover {
-    background-color: #26ed8a; /* Cambia el color de fondo al verde claro en hover */
-  }
-  
+
   /* Media Queries para pantallas medianas (tablets) */
   @media (max-width: 768px) {
     .content {
