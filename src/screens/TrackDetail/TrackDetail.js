@@ -1,6 +1,4 @@
-// TrackDetail.js
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import './trackDetail.css';
 
 class TrackDetail extends Component {
@@ -9,7 +7,7 @@ class TrackDetail extends Component {
     this.state = {
       id: props.match.params.id,
       info: null,
-      isFavorite: false, // No se utilizará para el seguimiento de favoritos
+      //isFavorite: false, // No se utilizará para el seguimiento de favoritos
     };
   }
 
@@ -66,28 +64,40 @@ class TrackDetail extends Component {
   }
 
   render() {
-    const {info} = this.state
-    
+    const { info } = this.state;
+
     return (
-      <div className='container'>
-        {info ? (
-          <div className="spacer">
-            <h4 className='body_track'>{info.title}</h4>
-          <p className='body_track'>{info.artist.name}</p>
-          <p className='body_track'>{info.album.title}</p>
-          <img className='imagen' src={info.album.cover_medium} alt={this.state.info.album.title} />
-          <iframe src={info.preview} title="Audio Preview" />
-            <button
-              className='boton'
-              onClick={() => this.addToFavorites(info.id)}
-            >
-              {this.isItemInFavorites(JSON.parse(localStorage.getItem('favoriteAlbums') || '[]'), info.id) ? 'Remove from Favorites' : 'Add to Favorites'}
-            </button>
-          </div>
-        ) : (
-          <h4>Loading...</h4>
-        )}
-      </div>
+      <React.Fragment>
+        <div className="container">
+          {info ? (
+            <div className="spacer">
+              <img
+                className="imagen"
+                src={info.album.cover_big}
+                alt={this.state.info.album.title}
+              />
+              <h4 className="title">{info.title}</h4>
+              <p className="artist">{info.artist.name}</p>
+              <p className="album">{info.album.title}</p>
+              
+              <iframe className='preview' src={info.preview} title="Audio Preview" />
+              <button
+                className={`boton ${this.state.isFavorite ? "favorite" : "not-favorite"}`}
+                onClick={() => this.addToFavorites(info.id)}
+              >
+                {this.isItemInFavorites(
+                  JSON.parse(localStorage.getItem("favoriteTracks") || "[]"),
+                  info.id
+                )
+                  ? "Remove from Favorites"
+                  : "Add to Favorites"}
+              </button>
+            </div>
+          ) : (
+            <h4>Loading...</h4>
+          )}
+        </div>
+      </React.Fragment>
     );
   }
 }

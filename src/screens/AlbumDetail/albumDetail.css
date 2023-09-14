@@ -1,44 +1,115 @@
-/* album.css */
+/* albumDetail.css */
+body {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  list-style-type: none;
+}
+
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Centra verticalmente */
-    background-color: #581212; /* Cambia a un fondo gris claro */
-    flex-direction: column;
-    min-height: 100vh; /* Asegura que el contenedor ocupe al menos toda la altura de la ventana */
-    text-align: center; /* Centra horizontalmente el contenido de texto */
-  }
-  
-  .title {
-    font-family: 'Work Sans', sans-serif;
-    text-align: center;
-    margin: 10px 0; /* Agrega espacio entre los elementos de texto */
-    color: white;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Centra verticalmente */
+  background-color: #0e0e0e;
+  flex-direction: column;
+  min-height: 100vh;
+  /* Asegura que el contenedor ocupe al menos toda la altura de la ventana */
+  text-align: center;
+  /* Centra horizontalmente el contenido de texto */
+}
+
+.title {
+  font-family: 'Work Sans', sans-serif;
+  text-align: center;
+  margin: 10px 0;
+  /* Agrega espacio entre los elementos de texto */
+  color: white;
+  font-size: 40px;
+  font-weight: bolder;
+}
+
+.artist {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.imagen {
+  width: 400px;
+  height: 400px;
+  align-self: center;
+  margin: 15px 0;
+  /* Agrega espacio entre la imagen y otros elementos */
+}
+
+.genre,
+.date {
+  font-size: 24px;
+  margin-bottom: 2px;
+  margin: 0;
+  font-weight: 400;
+  color: #747474;
+}
+
+.lista {
+  font-family: 'Work Sans', sans-serif;
+  text-align: center;
+  list-style: none;
+  /* Elimina los bullet points */
+  padding: 0;
+  /* Elimina el relleno predeterminado de la lista */
+  color: white;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.lista li {
+  margin: 5px 0;
+  /* Agrega espacio entre elementos de la lista */
+}
+
+/* Estilo para el botón cuando es favorito (verde) */
+.boton.favorite {
+  background-color: #26ed8a; /* Cambia a tu color verde deseado */
+  color: white; /* Texto en blanco */
+}
+
+/* Estilo para el botón cuando no es favorito (gris) */
+.boton.not-favorite {
+  background-color: green; /* Cambia a tu color gris deseado */
+  color: white; /* Texto en blanco */
+}
+
+@media (min-width: 768px) {
   .imagen {
-    width: 500px;
-    height: 500px;
-    align-self: center;
-    margin: 20px 0; /* Agrega espacio entre la imagen y otros elementos */
+    margin-top: 40px;
+    width: 600px;
+    /* Reduce el tamaño de la imagen en pantallas más pequeñas */
+    height: 600px;
   }
-  
+
+  .title {
+    font-size: 45px;
+  }
+
+  .artist {
+    font-size: 35px;
+  }
+
+  .genre,
+  .date {
+    font-size: 30px;
+  }
+
   .lista {
-    font-family: 'Work Sans', sans-serif;
-    text-align: center;
-    list-style: none; /* Elimina los bullet points */
-    padding: 0; /* Elimina el relleno predeterminado de la lista */
-    color: white;
+    font-size: 25px;
   }
-  
-  .lista li {
-    margin: 5px 0; /* Agrega espacio entre elementos de la lista */
+
+  .boton {
+    height: 65px;
+    width: 250px;
+    font-size: 25px;
+    margin-bottom: 50px;
   }
-  
-  @media (max-width: 768px) {
-    .imagen {
-      width: 400px; /* Reduce el tamaño de la imagen en pantallas más pequeñas */
-      height: 400px;
-    }
-  }
-  
+}
