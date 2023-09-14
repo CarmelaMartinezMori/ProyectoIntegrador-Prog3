@@ -6,12 +6,14 @@ import './albumListContainer.css';
 function AlbumListContainer(props) {
   return (
     <React.Fragment>
-      <section className="album-list-container">
-        <h2>Albums</h2>
-        <Link to="/albums">
-          <button className="button">View All</button>
-        </Link>
-        <div className="content">
+      <section className="content">
+        <div className="header">
+          <h2>Albums</h2>
+          <Link to="/albums">
+            <button className="button">View All</button>
+          </Link>
+        </div>
+        <div className="album-list">
           {props.data.length <= 0 ? (
             <h1>Loading...</h1>
           ) : (

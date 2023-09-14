@@ -21,7 +21,6 @@ class TrackListContainer extends Component {
                 <TrackList
                   info={track}
                   favoriteTracks={this.props.favoriteTracks}
-                  updateFavorites={this.props.updateFavorites}
                 />
               </article>
             ))

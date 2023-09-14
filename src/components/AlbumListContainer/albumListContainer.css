@@ -7,14 +7,22 @@ body {
 .content {
     background-color: #0e0e0e;
     width: 100%;
+    margin-top: 20px;
     display: flex;
     flex-wrap: wrap; /* Permite que los elementos se muestren en filas */
     justify-content: flex-start; /* Alinea los elementos a la izquierda */
+    flex-direction: column;
+    align-items: center;
   }
   
   .content h2 {
     color: white;
     font-size: 40px;
+  }
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   /* Estilos opcionales para espaciado entre elementos */
@@ -22,6 +30,7 @@ body {
     margin-right: 20px; /* Espacio entre elementos (ajusta según tus preferencias) */
     display: flex;
     flex-direction: row;
+    align-items: center;
   }
   
   /* Estilo para el botón "View All" */
@@ -44,15 +53,33 @@ body {
 
   
   /* Media Queries para pantallas medianas (tablets) */
-  @media (max-width: 768px) {
-    .content {
-      justify-content: center; /* Centra los elementos en pantallas medianas */
+  @media (min-width: 768px) {
+    .header {
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      margin-left: 10px;
     }
-    
+  
+    .button {
+      margin-top: 10; /* Elimina el margen superior entre el título y el botón */
+    }
+  
+    .album-list {
+      display: flex;
+      flex-wrap: wrap; /* Permite que los álbumes se muestren en filas */
+      justify-content: flex-start; /* Alinea los álbumes a la izquierda */
+    }
+  
+    .list {
+      width: 350px; /* Define el ancho de cada álbum en filas (ajusta según tus preferencias) */
+      margin-right: 20px; /* Espacio entre los álbumes */
+      margin-bottom: 20px; /* Espacio entre las filas de álbumes */
+    }
   }
   
   /* Media Queries para pantallas pequeñas (móviles) */
-  @media (max-width: 480px) {
+  @media (min-width: 1024px) {
     .content {
       flex-direction: column; /* Muestra los elementos en una sola columna en pantallas pequeñas */
       align-items: center; /* Centra los elementos verticalmente en pantallas pequeñas */
