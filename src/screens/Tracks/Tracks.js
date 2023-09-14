@@ -7,7 +7,7 @@ class Tracks extends Component {
     super(props);
     this.state = {
       tracks: [],
-      offset: 20,
+      offset: 30,
       index: 0,
       backup: [],
       searchQuery: '',
@@ -19,7 +19,7 @@ class Tracks extends Component {
   }
 
   fetchTracks() {
-    fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks?limit=20&offset=${this.state.index}`)
+    fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks?limit=30&offset=${this.state.index}`)
       .then((res) => res.json())
       .then((data) => {
         this.setState((prevState) => ({
@@ -43,9 +43,6 @@ class Tracks extends Component {
     });
   }
 
-  loadMoreTracks() {
-    this.fetchTracks();
-  }
 
   render() {
     return (
@@ -65,9 +62,7 @@ class Tracks extends Component {
           </form>
           <TrackListContainer
             data={this.state.tracks}
-            showLoadMoreButton={false}
           />
-          <button onClick={() => this.loadMoreTracks()}>Load More</button>
         </div>
       </React.Fragment>
     );

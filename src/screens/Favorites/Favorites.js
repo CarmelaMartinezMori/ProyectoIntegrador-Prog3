@@ -21,57 +21,56 @@ class Favorites extends Component {
     const storedTracks = localStorage.getItem('favoriteTracks');
     if (storedTracks) {
       const trackIds = JSON.parse(storedTracks);
-
-      Promise.all(trackIds.map((id) => this.fetchTrackInfo(id)))
+  
+      if (trackIds.length > 0) { // Verificar la longitud del array
+        Promise.all(trackIds.map((id) =>{
+        return this.fetchTrackInfo(id)
+        }))
         .then((trackInfoArray) => {
-          this.setState({ favoriteTracks: trackInfoArray });
+            //this.setState({ favoriteTracks: trackInfoArray });
+            console.log("then de promise all", trackInfoArray)
+            this.setState({favoriteTracks: trackInfoArray})
+          })
+          .catch((error) => {
+            console.error('Error fetching favorite tracks:', error);
+          });
+      }
+    }
+  
+    //Cargar favoritos de álbumes
+    const storedAlbums = localStorage.getItem('favoriteAlbums');
+    if(storedAlbums){
+      const albumIds = JSON.parse(storedAlbums);
+
+      if(albumIds.length > 0){
+        Promise.all(albumIds.map((id) => {
+          return this.fetchAlbumInfo(id)
+        }))
+        .then((albumInfoArray) => {
+          console.log("then de promise all 2", albumInfoArray)
+          this.setState({favoriteAlbums: albumInfoArray})
         })
         .catch((error) => {
           console.error('Error fetching favorite tracks:', error);
         });
-    }
-
-    // Cargar favoritos de álbumes
-    const storedAlbums = localStorage.getItem('favoriteAlbums');
-    if (storedAlbums) {
-      const albumIds = JSON.parse(storedAlbums);
-
-      Promise.all(albumIds.map((id) => this.fetchAlbumInfo(id)))
-        .then((albumInfoArray) => {
-          this.setState({ favoriteAlbums: albumInfoArray });
-        })
-        .catch((error) => {
-          console.error('Error fetching favorite albums:', error);
-        });
+      }
     }
   }
+  
 
   fetchTrackInfo(trackId) {
     return fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/track/${trackId}`)
       .then((response) => response.json())
-      .then((data) => {
-        if (!data.error) {
-          return { ...data, isFavorite: true }; // Agrega la propiedad isFavorite
-        } else {
-          console.error('Error fetching track info:', data.error);
-          return null;
-        }
-      });
+      .catch(error => console.log(error))
   }
 
   fetchAlbumInfo(albumId) {
     return fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/album/${albumId}`)
       .then((response) => response.json())
-      .then((data) => {
-        if (!data.error) {
-          return data;
-        } else {
-          console.error('Error fetching album info:', data.error);
-          return null;
-        }
-      });
+      .catch(error => console.log(error))
   }
 
+  
   clearFavorites() {
     // Limpiar favoritos eliminando las claves de almacenamiento local
     localStorage.removeItem('favoriteTracks');
@@ -84,12 +83,6 @@ class Favorites extends Component {
     });
   }
 
-  // Método para actualizar la lista de canciones favoritas después de eliminar una canción
-  updateFavoriteTracks(updatedTracks) {
-    this.setState({
-      favoriteTracks: updatedTracks,
-    });
-  }
 
   render() {
     const { favoriteTracks, favoriteAlbums } = this.state;
@@ -104,10 +97,9 @@ class Favorites extends Component {
         {favoriteTracks.length > 0 && (
           <div>
             <h2>Favorite Tracks</h2>
-            {/* Pasa el método de actualización como prop */}
+            
             <TrackListContainer
               data={favoriteTracks}
-              updateFavorites={(updatedTracks) => this.updateFavoriteTracks(updatedTracks)}
             />
           </div>
         )}

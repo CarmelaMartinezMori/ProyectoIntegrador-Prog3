@@ -7,7 +7,7 @@ class TrackDetail extends Component {
     this.state = {
       id: props.match.params.id,
       info: null,
-      //isFavorite: false, // No se utilizará para el seguimiento de favoritos
+      isFavorite: false, // No se utilizará para el seguimiento de favoritos
     };
   }
 

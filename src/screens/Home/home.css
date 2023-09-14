@@ -1,5 +1,14 @@
 /* Estilo para la sección de búsqueda */
 
+.body {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  list-style-type: none;
+  font-family: 'Work Sans', sans-serif;
+}
+
 .content{
   border: none;
 }
@@ -13,18 +22,12 @@
 }
 
 /* Estilo para el formulario de búsqueda */
-.search-home form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-  color: white;
-}
+
 
 /* Estilo para el input de búsqueda */
 .search-home input[type="text"] {
   width: 100%;
-  max-width: 400px;
+  max-width: 300px;
   padding: 10px;
   font-size: 18px;
   border: 1px solid #ccc;
@@ -49,59 +52,44 @@
   background-color: #26ed8a;
 }
 
-/* Estilo para la sección de resultados de búsqueda */
-.search-results {
-  margin-top: 20px;
-  padding: 20px;
-  background-color: #0e0e0e; /* Color de fondo similar al de Spotify */
+.top-results{
   display: flex;
-  flex-wrap: wrap; /* Permite que las tarjetas se ajusten automáticamente a las filas */
-  justify-content: space-between; /* Espacio uniforme entre las tarjetas */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-results h3{
+  font-size: 30px;
+  align-content: center;
+}
+
+.search-results-list{
+  list-style: none;
   
 }
 
-/* Estilo para cada tarjeta de resultado */
-.search-results .search-result-item {
-  flex-basis: calc(20% - 20px); /* Establece el ancho de cada tarjeta en un 20% del contenedor con un margen de 20px entre tarjetas */
-  background-color: #121212; 
-  border-radius: 5px; /* Bordes redondeados */
-  padding: 10px; /* Reducimos el espacio interno de la tarjeta */
-  box-sizing: border-box;
-  margin-bottom: 20px; /* Agrega espacio entre las tarjetas */
-  min-width: 120px; /* Ancho mínimo para las tarjetas */
-  max-width: 160px; /* Ancho máximo para las tarjetas */
-  text-align: center; /* Centra el contenido en la tarjeta */
-  list-style: none;
+.search-result-item{
+  background-color: #252525;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5%;
+  width: 200px;
+  height: auto;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+.search-link{
   text-decoration: none;
 }
+.search-result-title, .search-result-artist {
 
-
-/* Estilo para la imagen del resultado */
-.search-results .search-result-item img {
-  max-width: 100%; /* La imagen no excederá el ancho de la tarjeta */
-  height: auto; /* La altura se ajusta automáticamente */
-  margin-bottom: 10px; /* Agrega espacio entre la imagen y el contenido */
+  color: white
 }
-
-
-/* Estilo para el título del resultado */
-.search-results .search-result-title {
-  font-size: 18px;
-  color: #fff; /* Color de texto blanco */
-  margin: 0;
-}
-
-/* Estilo para la información adicional del resultado */
-.search-results .search-result-artist {
-  font-size: 14px;
-  color: #b3b3b3; /* Color de texto gris claro similar al de Spotify */
-  margin: 0;
-}
-
 /* Media Query para pantallas medianas y grandes */
-@media (max-width: 480px) {
-  /* Para pantallas pequeñas, cambia el diseño a una tarjeta por fila */
-  .search-results .search-result-item {
-    flex-basis: calc(50% - 20px); /* Tarjetas de ancho del 50% con margen entre ellas */
+@media (min-width: 768px) {
+  .search-home input[type="text"] {
+    max-width: 500px;
   }
 }

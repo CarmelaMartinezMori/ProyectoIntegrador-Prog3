@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import TrackList from '../TrackList/TrackList';
 
 class TrackListContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
+
 
   render() {
     return (

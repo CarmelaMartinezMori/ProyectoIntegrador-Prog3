@@ -1,17 +1,19 @@
-/* Estilos para dispositivos móviles */
+/* albumList.css */
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  box-sizing: border-box;
+  list-style-type: none;
 }
 
 .card {
-  background-color: red; /* Cambia "red" al color de fondo rojo que prefieras */
+  background-color: #252525; /* Cambia "red" al color de fondo rojo que prefieras */
   margin: 25px;
   padding: 20px; /* Ajusta el espacio interno según tus preferencias */
   color: rgb(35, 34, 52);
   border-radius: 20px;
-  border: solid 2px #252525;
   max-width: 100%; /* Ancho máximo del 100% del contenedor padre */
   width: 300px; /* Ancho automático según el contenido */
   display: flex;

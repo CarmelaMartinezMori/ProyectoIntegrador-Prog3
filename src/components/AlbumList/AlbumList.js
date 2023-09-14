@@ -7,7 +7,6 @@ class AlbumList extends Component {
     super(props);
     this.state = {
       isExpanded: false,
-      isFavorite: false,
     };
   }
 
@@ -17,44 +16,18 @@ class AlbumList extends Component {
     }));
   };
 
-  toggleFavorite = () => {
-    const { info } = this.props;
-    const albumId = info.id;
-
-    // Obtener el estado actual de favoritos de álbumes
-    const storedAlbums = localStorage.getItem('favoriteAlbums');
-    const albumIds = storedAlbums ? JSON.parse(storedAlbums) : [];
-
-    // Verificar si el álbum actual ya está en favoritos
-    const isFavorite = albumIds.includes(albumId);
-
-    // Actualizar la lista de álbumes favoritos en función de la acción
-    if (isFavorite) {
-      // Si ya es un favorito, quitarlo de la lista
-      const updatedAlbumIds = albumIds.filter((id) => id !== albumId);
-      localStorage.setItem('favoriteAlbums', JSON.stringify(updatedAlbumIds));
-    } else {
-      // Si no es un favorito, agregarlo a la lista
-      albumIds.push(albumId);
-      localStorage.setItem('favoriteAlbums', JSON.stringify(albumIds));
-    }
-
-    // Actualizar el estado de isFavorite en el componente
-    this.setState({
-      isFavorite: !isFavorite,
-    });
-  };
-
   render() {
+    const { isExpanded } = this.state;
     const { info } = this.props;
-    const { isExpanded, isFavorite } = this.state;
 
+    console.log(info.id)
+    
     return (
       <React.Fragment>
         <section className={`content ${isExpanded ? "expanded" : ""}`}>
           <article className="card">
             <Link to={`/albumDetail/id/${info.id}`}>
-              <img src={info.cover} alt={info.title} />
+              <img src={info.cover_big} alt={info.title} />
             </Link>
             <div >
               <div >
@@ -73,9 +46,6 @@ class AlbumList extends Component {
                   {isExpanded ? "Ver menos" : "Ver más"}
                 </button>
                 <Link to={`/albumDetail/id/${info.id}`}>Ir a detalle</Link>
-                <button onClick={this.toggleFavorite}>
-                  {isFavorite ? "Quitar de favoritos" : "Agregar a favoritos"}
-                </button>
               </div>
             </div>
           </article>

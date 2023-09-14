@@ -76,7 +76,7 @@ class Home extends Component {
                   <ul className="search-results-list">
                     {topResults.map((result) => (
                       <li key={result.id} className="search-result-item">
-                        <Link to={result.type === 'track' ? `/trackDetail/id/${result.id}` : `/albumDetail/id/${result.id}`}>
+                        <Link className="search-link" to={result.type === 'track' ? `/trackDetail/id/${result.id}` : `/albumDetail/id/${result.id}`}>
                           <img src={result.album.cover} alt={result.title} />
                           <h4 className="search-result-title">{result.title}</h4>
                           <p className="search-result-artist">Artist: {result.artist.name}</p>

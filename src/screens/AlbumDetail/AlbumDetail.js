@@ -1,4 +1,3 @@
-// AlbumDetail.js
 import React, { Component } from 'react';
 import './albumDetail.css';
 
@@ -6,9 +5,9 @@ class AlbumDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: this.props.match.params.id,
+      id: props.match.params.id,
       info: null,
-      //isFavorite: false
+      isFavorite: false,
     };
   }
 
@@ -18,9 +17,9 @@ class AlbumDetail extends Component {
   }
 
   fetchAlbumData() {
-    fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/album/${this.state.id}`)
+    fetch(`https://api.allorigins.win/raw?url=https://api.deezer.com/album/${this.state.id}`)
       .then((response) => response.json())
-      .then((data) => this.setState({ info: data }))
+      .then((info) => this.setState({ info: info }))
       .catch((error) => console.log('Error: ' + error));
   }
 

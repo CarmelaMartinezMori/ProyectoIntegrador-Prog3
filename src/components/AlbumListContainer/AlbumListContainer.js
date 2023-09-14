@@ -6,7 +6,7 @@ import './albumListContainer.css';
 function AlbumListContainer(props) {
   return (
     <React.Fragment>
-      <section className="content">
+      <section className="album-list-container">
         <h2>Albums</h2>
         <Link to="/albums">
           <button className="button">View All</button>
