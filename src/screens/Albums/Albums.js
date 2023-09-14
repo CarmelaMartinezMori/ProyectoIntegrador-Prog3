@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AlbumListContainer from '../../components/AlbumListContainer/AlbumListContainer';
+import './albums.css'
 
 class Albums extends Component {
   constructor(props) {
@@ -54,7 +55,7 @@ class Albums extends Component {
             value={this.state.searchQuery}
             onChange={(event) => this.setState({ searchQuery: event.target.value })} 
           />
-          <button type="submit">Search</button>
+          <button className="search-button" type="submit">Search</button>
         </form>
         <AlbumListContainer data={this.state.albums} />
       </div>

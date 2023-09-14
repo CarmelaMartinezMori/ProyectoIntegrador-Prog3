@@ -28,7 +28,7 @@ class TrackList extends Component {
             <img className="imagen" src={info.album.cover_big} alt={info.title} />
             <h3> {info.title}</h3>
           </Link>
-          <button onClick={this.toggleExpansion}>
+          <button className="viewmore" onClick={this.toggleExpansion}>
             {isExpanded ? "View less" : "View more"}
           </button>
           {isExpanded && (
@@ -37,7 +37,7 @@ class TrackList extends Component {
               <p className='duration'>Duration: {info.duration} minutes</p>
             </>
           )}
-          <Link to={`/trackDetail/id/${info.id}`}>Ir a detalle</Link>
+          <Link to={`/trackDetail/id/${info.id}`}>Go to Detail</Link>
         </article>
       </section>
     </React.Fragment>

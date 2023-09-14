@@ -35,6 +35,14 @@ body {
   text-align: center; /* Alinea el texto al centro */
 }
 
+.artist, .duration{
+  color: rgb(117, 117, 117);
+  font-size: 25px
+}
+
+.viewmore{
+  margin-bottom: 10px;
+}
 /* Estilos para botones */
 button {
   background-color: white;

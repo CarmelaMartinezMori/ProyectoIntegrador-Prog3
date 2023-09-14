@@ -46,8 +46,11 @@ body {
   }
 
   .artist, .duration{
-    color:rgb(103, 106, 120)
+    color: rgb(117, 117, 117);
+    font-size: 25px
   }
+
+
   /* Estilo para el botón "View more" */
   .content button {
     background-color: rgb(30, 215, 96); /* Fondo verde */

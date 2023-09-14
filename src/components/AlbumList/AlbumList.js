@@ -36,16 +36,16 @@ class AlbumList extends Component {
                 </Link>
                 {isExpanded && (
                   <div className="info-container">
-                    <p>Artist: {info.artist.name}</p>
-                    <p>Duration: {info.duration} minutes</p>
+                    <p className="artist">Artist: {info.artist.name}</p>
+                    <p className="duration">Duration: {info.duration} minutes</p>
                   </div>
                 )}
               </div>
               <div className="button-container">
-                <button onClick={this.toggleExpansion}>
-                  {isExpanded ? "Ver menos" : "Ver más"}
+                <button className="viewmore" onClick={this.toggleExpansion}>
+                  {isExpanded ? "View Less" : "View More"}
                 </button>
-                <Link to={`/albumDetail/id/${info.id}`}>Ir a detalle</Link>
+                <Link to={`/albumDetail/id/${info.id}`}>Go to Detail</Link>
               </div>
             </div>
           </article>
