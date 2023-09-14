@@ -1,8 +1,15 @@
 /* Estilo para todos los enlaces dentro del componente TrackList */
 /* Estilo para el fondo rojo en los elementos TrackList */
-.content{
- width: auto;
-}
+.content {
+    height: auto; /* Ajusta la altura automáticamente al contenido */
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    padding: 10px; /* Espaciado interno */
+  }
+
 .card {
     background-color: red; /* Cambia "red" al color de fondo rojo que prefieras */
     margin: 25px;
@@ -13,9 +20,8 @@
     max-width: 100%; /* Ancho máximo del 100% del contenedor padre */
     width: 300px; /* Ancho automático según el contenido */
     display: flex;
-  flex-direction: column;
+    flex-direction: column;
   }
-  
   
 .content a {
     text-decoration: none; /* Quitar subrayado */
@@ -36,4 +42,5 @@
   .content button:hover {
     background-color: #26ed8a; /* Cambio de color al pasar el mouse */
   }
+  
   

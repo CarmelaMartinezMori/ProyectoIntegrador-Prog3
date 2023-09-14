@@ -16,7 +16,7 @@ function AlbumListContainer(props) {
             <h1>Loading...</h1>
           ) : (
             props.data.map((album, i) => (
-              <article className="article" key={i}>
+              <article className="list" key={i}>
                 <AlbumList info={album} />
               </article>
             ))

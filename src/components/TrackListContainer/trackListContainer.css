@@ -42,7 +42,25 @@ body {
   }
 
   .tracklist{
-    width: 50%;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .button {
+    background-color: rgb(30, 215, 96); /* Cambia el color de fondo al verde deseado */
+    color: #fff; /* Color de texto blanco */
+    padding: 10px 20px;
+    font-size: 18px;
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Estilo hover para el botón "View All" */
+  .button:hover {
+    background-color: #26ed8a; /* Cambia el color de fondo al verde claro en hover */
   }
   
   /* Media Queries para pantallas medianas (tablets) */

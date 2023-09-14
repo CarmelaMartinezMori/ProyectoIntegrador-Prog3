@@ -18,8 +18,10 @@ body {
   }
   
   /* Estilos opcionales para espaciado entre elementos */
-  .article {
+  .list {
     margin-right: 20px; /* Espacio entre elementos (ajusta según tus preferencias) */
+    display: flex;
+    flex-direction: row;
   }
   
   /* Estilo para el botón "View All" */
@@ -46,6 +48,7 @@ body {
     .content {
       justify-content: center; /* Centra los elementos en pantallas medianas */
     }
+    
   }
   
   /* Media Queries para pantallas pequeñas (móviles) */
