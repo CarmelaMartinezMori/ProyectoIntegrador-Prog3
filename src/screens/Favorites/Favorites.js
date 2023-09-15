@@ -88,7 +88,7 @@ class Favorites extends Component {
     const hasFavorites = favoriteTracks.length > 0 || favoriteAlbums.length > 0;
 
     return (
-      <>
+      <React.Fragment>
         <h1>Favorites</h1>
         {hasFavorites && (
           <button onClick={() => this.clearFavorites()}>Clear All Favorites</button>
@@ -109,9 +109,9 @@ class Favorites extends Component {
           </div>
         )}
         {!hasFavorites && (
-          <h3>You have no favorite tracks or albums.</h3>
+          <h3 className='nofavorites'>You have no favorite tracks or albums.</h3>
         )}
-      </>
+      </React.Fragment>
     );
   }
 }
