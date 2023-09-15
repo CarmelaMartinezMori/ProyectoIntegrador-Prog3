@@ -1,102 +1,100 @@
 /* trackDetail.css */
 body {
-    padding: 0;
-    margin: 0;
-    text-decoration: none;
-    box-sizing: border-box;
-    list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  list-style-type: none;
 }
 
-.container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #0e0e0e;
-    flex-direction: column;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0e0e0e;
+  flex-direction: column;
 }
 
-.spacer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
+.spacer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 }
 
 .imagen {
-    width: 400px;
-    height: 400px;
-    align-self: center;
-    margin: 20px 0;
-    /* Agrega espacio entre la imagen y otros elementos */
+  width: 400px;
+  height: 400px;
+  align-self: center;
+  margin: 20px 0;
 }
 
 .title {
-    font-family: 'Work Sans', sans-serif;
-    text-align: center;
-    margin: 10px 0;
-    /* Agrega espacio entre los elementos de texto */
-    color: white;
-    font-size: 40px;
-    font-weight: bolder;
+  font-family: 'Work Sans', sans-serif;
+  text-align: center;
+  margin: 10px 0;
+  color: white;
+  font-size: 40px;
+  font-weight: bolder;
 }
 
-.artist, .title{
-    margin: 10px;
-}
-.album{
-    font-size: 20px;
-    color: #747474;
+.artist,
+.title {
+  margin: 10px;
 }
 
-.preview{
-    background-color: #747474;
-    border: none;
-    margin-bottom: 20px;
+.album {
+  font-size: 20px;
+  color: #747474;
 }
 
-/* Estilo para el botón cuando es favorito (verde) */
+.preview {
+  background-color: #747474;
+  border: none;
+  margin-bottom: 20px;
+}
+
+
 .boton.favorite {
-    background-color: #26ed8a; /* Cambia a tu color verde deseado */
-    color: white; /* Texto en blanco */
-  }
-  
-  /* Estilo para el botón cuando no es favorito (gris) */
-  .boton.not-favorite {
-    background-color: gray; /* Cambia a tu color gris deseado */
-    color: white; /* Texto en blanco */
-  }
-  
+  background-color: #26ed8a;
+  color: white;
+}
+
+
+.boton.not-favorite {
+  background-color: gray;
+  color: white;
+}
+
 @media (min-width: 768px) {
-    .imagen {
-      margin-top: 40px;
-      width: 600px;
-      /* Reduce el tamaño de la imagen en pantallas más pequeñas */
-      height: 600px;
-    }
-  
-    .title {
-      font-size: 45px;
-    }
-  
-    .artist {
-      font-size: 35px;
-    }
-  
-    .genre,
-    .date {
-      font-size: 30px;
-    }
-  
-    .lista {
-      font-size: 25px;
-    }
-  
-    .boton {
-      height: 65px;
-      width: 250px;
-      font-size: 25px;
-      margin-bottom: 50px;
-    }
+  .imagen {
+    margin-top: 40px;
+    width: 600px;
+    height: 600px;
   }
-  
+
+  .title {
+    font-size: 45px;
+  }
+
+  .artist {
+    font-size: 35px;
+  }
+
+  .genre,
+  .date {
+    font-size: 30px;
+  }
+
+  .lista {
+    font-size: 25px;
+  }
+
+  .boton {
+    height: 65px;
+    width: 250px;
+    font-size: 25px;
+    margin-bottom: 50px;
+  }
+}

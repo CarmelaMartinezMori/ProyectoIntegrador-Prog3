@@ -18,6 +18,7 @@ body {
   width: 300px; /* Ancho automático según el contenido */
   display: flex;
   flex-direction: column;
+
 }
 
 .content {
