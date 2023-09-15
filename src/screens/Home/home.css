@@ -1,5 +1,4 @@
 /* Estilo para la sección de búsqueda */
-
 .body {
   padding: 0;
   margin: 0;
@@ -9,16 +8,15 @@
   font-family: 'Work Sans', sans-serif;
 }
 
-.content{
+.content {
   border: none;
 }
 
 .search-home {
   text-align: center;
   padding: 20px;
-  color:white;
+  color: white;
   background-color: black;
-
 }
 
 /* Estilo para el formulario de búsqueda */
@@ -52,24 +50,24 @@
   background-color: #26ed8a;
 }
 
-.top-results{
+.top-results {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.top-results h3{
+.top-results h3 {
   font-size: 30px;
   align-content: center;
 }
 
-.search-results-list{
+.search-results-list {
   list-style: none;
-  
+
 }
 
-.search-result-item{
+.search-result-item {
   background-color: #252525;
   display: flex;
   align-items: center;
@@ -80,13 +78,16 @@
   margin-bottom: 10px;
   padding: 10px;
 }
-.search-link{
+
+.search-link {
   text-decoration: none;
 }
-.search-result-title, .search-result-artist {
 
+.search-result-title,
+.search-result-artist {
   color: white
 }
+
 /* Media Query para pantallas medianas y grandes */
 @media (min-width: 768px) {
   .search-home input[type="text"] {

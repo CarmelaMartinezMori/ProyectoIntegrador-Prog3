@@ -1,34 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import TrackList from '../TrackList/TrackList';
+import './trackListContainer.css'; 
 
-class TrackListContainer extends Component {
-
-
-  render() {
-    return (
+function TrackListContainer(props) {
+  return (
+    <React.Fragment>
       <section className="content">
-        <section>
+        <div className="header">
           <h2>Songs</h2>
           <Link to="/tracks">
-          <button className="button">View All</button>
-        </Link>
-          {this.props.data.length <= 0 ? (
+            <button className="button">View All</button>
+          </Link>
+        </div>
+        <div className="track-list">
+          {props.data.length <= 0 ? (
             <h1>Loading...</h1>
           ) : (
-            this.props.data.map((track, i) => (
-              <article className='list' key={i}>
-                <TrackList
-                  info={track}
-                  favoriteTracks={this.props.favoriteTracks}
-                />
+            props.data.map((track, i) => (
+              <article className="list" key={i}>
+                <TrackList info={track} favoriteTracks={props.favoriteTracks} />
               </article>
             ))
           )}
-        </section>
+        </div>
       </section>
-    );
-  }
+    </React.Fragment>
+  );
 }
 
 export default TrackListContainer;

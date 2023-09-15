@@ -49,10 +49,8 @@ class Tracks extends Component {
       <React.Fragment>
         <div className="content">
           <h1>All Songs</h1>
-          <form onSubmit={(event) => this.handleSearch(event)}>
-            <input
-              type="text"
-              placeholder="Search Songs"
+          <form className="search-tracks" onSubmit={(event) => this.handleSearch(event)}>
+            <input type="text" placeholder="Search Songs"
               value={this.state.searchQuery}
               onChange={(event) =>
                 this.setState({ searchQuery: event.target.value })
@@ -60,9 +58,7 @@ class Tracks extends Component {
             />
             <button type="submit">Search</button>
           </form>
-          <TrackListContainer
-            data={this.state.tracks}
-          />
+          <TrackListContainer data={this.state.tracks}/>
         </div>
       </React.Fragment>
     );

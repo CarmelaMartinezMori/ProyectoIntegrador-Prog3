@@ -62,13 +62,18 @@ class Home extends Component {
 
     return (
       <React.Fragment>
-        <div className='search-home'>
-        <h2>Search:</h2>
-        <form onSubmit={(event) => this.handleSearch(event)}>
-          <input type="text" name="search" onChange={(event) => this.handleChange(event)} value={this.state.value} />
-          <button type="submit">Search</button>
-        </form>
-        <section>
+        <div className="search-home">
+          <h2>Search:</h2>
+          <form onSubmit={(event) => this.handleSearch(event)}>
+            <input
+              type="text"
+              name="search"
+              onChange={(event) => this.handleChange(event)}
+              value={this.state.value}
+            />
+            <button type="submit">Search</button>
+          </form>
+          <section>
             {searchResults.length > 0 ? (
               <React.Fragment>
                 <div className="top-results">
@@ -76,29 +81,37 @@ class Home extends Component {
                   <ul className="search-results-list">
                     {topResults.map((result) => (
                       <li key={result.id} className="search-result-item">
-                        <Link className="search-link" to={result.type === 'track' ? `/trackDetail/id/${result.id}` : `/albumDetail/id/${result.id}`}>
+                        <Link
+                          className="search-link"
+                          to={
+                            result.type === "track"
+                              ? `/trackDetail/id/${result.id}`
+                              : `/albumDetail/id/${result.id}`
+                          }
+                        >
                           <img src={result.album.cover} alt={result.title} />
-                          <h4 className="search-result-title">{result.title}</h4>
-                          <p className="search-result-artist">Artist: {result.artist.name}</p>
+                          <h4 className="search-result-title">
+                            {result.title}
+                          </h4>
+                          <p className="search-result-artist">
+                            Artist: {result.artist.name}
+                          </p>
                         </Link>
                       </li>
                     ))}
                   </ul>
                 </div>
               </React.Fragment>
-            ) 
-            : (
+            ) : (
               // Renderiza listas de canciones y álbumes predeterminadas si no se realiza una búsqueda
               <React.Fragment>
                 <AlbumListContainer data={this.state.albums} />
                 <TrackListContainer data={this.state.tracks} />
               </React.Fragment>
             )}
-          
-        </section>
-      </div>
+          </section>
+        </div>
       </React.Fragment>
-      
     );
   }
 }

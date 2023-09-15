@@ -27,8 +27,7 @@ class Favorites extends Component {
         return this.fetchTrackInfo(id)
         }))
         .then((trackInfoArray) => {
-            //this.setState({ favoriteTracks: trackInfoArray });
-            console.log("then de promise all", trackInfoArray)
+            //console.log("then de promise all", trackInfoArray)
             this.setState({favoriteTracks: trackInfoArray})
           })
           .catch((error) => {
@@ -47,7 +46,7 @@ class Favorites extends Component {
           return this.fetchAlbumInfo(id)
         }))
         .then((albumInfoArray) => {
-          console.log("then de promise all 2", albumInfoArray)
+          //console.log("then de promise all 2", albumInfoArray)
           this.setState({favoriteAlbums: albumInfoArray})
         })
         .catch((error) => {

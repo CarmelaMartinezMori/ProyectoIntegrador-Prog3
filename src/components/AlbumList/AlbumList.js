@@ -19,8 +19,6 @@ class AlbumList extends Component {
   render() {
     const { isExpanded } = this.state;
     const { info } = this.props;
-
-    console.log(info.id)
     
     return (
       <React.Fragment>

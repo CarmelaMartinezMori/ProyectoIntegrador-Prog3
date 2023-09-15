@@ -46,19 +46,25 @@ class Albums extends Component {
 
   render() {
     return (
-      <div className='albums'>
-        <h1>All Albums</h1>
-        <form onSubmit={(event) => this.handleSearch(event)}>
-          <input
-            type="text"
-            placeholder="Search Albums"
-            value={this.state.searchQuery}
-            onChange={(event) => this.setState({ searchQuery: event.target.value })} 
-          />
-          <button className="search-button" type="submit">Search</button>
-        </form>
-        <AlbumListContainer data={this.state.albums} />
-      </div>
+      <React.Fragment>
+        <div className="content">
+          <h1>All Albums</h1>
+          <form className="search-albums" onSubmit={(event) => this.handleSearch(event)}>
+            <input
+              type="text"
+              placeholder="Search Albums"
+              value={this.state.searchQuery}
+              onChange={(event) =>
+                this.setState({ searchQuery: event.target.value })
+              }
+            />
+            <button className="search-button" type="submit">
+              Search
+            </button>
+          </form>
+          <AlbumListContainer data={this.state.albums} />
+        </div>
+      </React.Fragment>
     );
   }
 }

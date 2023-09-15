@@ -10,7 +10,8 @@ body {
     display: flex;
     flex-wrap: wrap; /* Permite que los elementos se muestren en filas */
     justify-content: flex-start; /* Alinea los elementos a la izquierda */
-    
+    flex-direction: column;
+    align-items: center;
   }
   
   .content h2 {
@@ -45,9 +46,28 @@ body {
 
 
   /* Media Queries para pantallas medianas (tablets) */
-  @media (max-width: 768px) {
-    .content {
-      justify-content: center; /* Centra los elementos en pantallas medianas */
+  @media (min-width: 768px) {
+    .header {
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      margin-left: 10px;
+    }
+  
+    .button {
+      margin-top: 10; /* Elimina el margen superior entre el título y el botón */
+    }
+  
+    .track-list {
+      display: flex;
+      flex-wrap: wrap; /* Permite que los álbumes se muestren en filas */
+      justify-content: flex-start; /* Alinea los álbumes a la izquierda */
+    }
+  
+    .list {
+      width: 350px; /* Define el ancho de cada álbum en filas (ajusta según tus preferencias) */
+      margin-right: 20px; /* Espacio entre los álbumes */
+      margin-bottom: 20px; /* Espacio entre las filas de álbumes */
     }
   }
   
